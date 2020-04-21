@@ -9,6 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -33,5 +36,27 @@ public class MenuRepositoryTest {
     public void loggerLoad() {
         assertThat(logger).isNotNull();
         logger.info("logger is not null");
+    }
+
+    @Test
+    public void getMenu() {
+        Menu menu = menuRepository.findById(1L).orElseThrow(() ->
+                new IllegalArgumentException("해당 menu가 없습니다. "));
+        assertThat(menu).isNotNull();
+        logger.info("menu : {}", menu.toString());
+    }
+
+    @Test
+    public void getDetail() {
+        Menu menu = menuRepository.findById(1L).orElseThrow(() ->
+                new IllegalArgumentException("해당 menu가 없습니다. "));
+        Detail detail = new Detail();
+        for (Item each : menu.getItems()) {
+            if (each.getId().equals(1L)) {
+               detail = each.getDetail();
+            }
+        }
+        assertThat(detail).isNotNull();
+        logger.info("detail : {}",detail);
     }
 }

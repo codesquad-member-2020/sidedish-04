@@ -10,7 +10,7 @@ import org.springframework.data.annotation.Id;
 @RequiredArgsConstructor
 @Getter
 @ToString
-public class detailSection {
+public class DetailSection {
 
     @Id
     private Long id;

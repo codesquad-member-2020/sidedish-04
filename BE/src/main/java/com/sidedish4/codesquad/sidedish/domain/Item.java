@@ -9,7 +9,6 @@ import org.springframework.data.relational.core.mapping.Embedded;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @NoArgsConstructor
 public class Item {
 

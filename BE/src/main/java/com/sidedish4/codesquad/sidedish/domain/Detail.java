@@ -1,14 +1,14 @@
 package com.sidedish4.codesquad.sidedish.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@RequiredArgsConstructor
-@Getter
 public class Detail {
 
     private String topImage;
@@ -18,8 +18,22 @@ public class Detail {
     private String deliveryFee;
     private String n_price;
     private String s_price;
-    private List<ThumbImage> ThumbImages;
-    private List<DetailSection> DetailSections;
+    private List<ThumbImage> ThumbImages = new ArrayList<>();
+    private List<DetailSection> DetailSections = new ArrayList<>();
+
+    @Builder
+    public Detail(String topImage, String productDescription, String point, String deliveryInfo, String deliveryFee,
+                  String n_price, String s_price, List<ThumbImage> thumbImages, List<DetailSection> detailSections) {
+        this.topImage = topImage;
+        this.productDescription = productDescription;
+        this.point = point;
+        this.deliveryInfo = deliveryInfo;
+        this.deliveryFee = deliveryFee;
+        this.n_price = n_price;
+        this.s_price = s_price;
+        ThumbImages = thumbImages;
+        DetailSections = detailSections;
+    }
 
     public String getTopImage() {
         return topImage;

@@ -1,5 +1,6 @@
 package com.sidedish4.codesquad.sidedish.domain;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,6 +27,11 @@ public class MenuRepositoryTest {
     private MenuRepository menuRepository;
 
     private Logger logger = LoggerFactory.getLogger(MenuRepositoryTest.class);
+
+//    @After
+//    public void tearDown() {
+//        menuRepository.deleteAll();
+//    }
 
     @Test
     public void contextLoad() {
@@ -59,4 +66,63 @@ public class MenuRepositoryTest {
         assertThat(detail).isNotNull();
         logger.info("detail : {}",detail);
     }
+
+    @Test
+    public void saveMenu() {
+        // thumb_image와 detail_section 객체를 만든다.
+        List<ThumbImage> thumbImages = new ArrayList<>();
+        List<DetailSection> detailSections = new ArrayList<>();
+        for (int count = 1; count < 3; count++) {
+            thumbImages.add(ThumbImage.builder()
+                    .url("thumb_image" + count)
+                    .build());
+        }
+        for (int count = 1; count < 3; count++) {
+            detailSections.add(DetailSection.builder()
+                    .url("detail_section" + count)
+                    .build());
+        }
+
+        // Detail 객체를 만든다.
+        Detail detail = Detail.builder()
+                .topImage("topimage")
+                .detailSections(detailSections)
+                .thumbImages(thumbImages)
+                .deliveryFee("500원")
+                .deliveryInfo("제주는 5000원")
+                .n_price("5000원")
+                .s_price("3000원")
+                .point("400원")
+                .productDescription("싱싱해요")
+                .build();
+
+        // delivery, badge 객체를 만든다.
+        List<Badge> badges = Arrays.asList(new Badge("할인특가"), new Badge("이벤트특가"));
+        List<Delivery> deliveries = Arrays.asList(new Delivery("새벽배송"), new Delivery("전국배송"));
+
+        // item 객체를 만든다. 그 후 List에 넣는다.
+        Item AItem = Item.builder()
+                .badges(badges)
+                .deliveries(deliveries)
+                .alt("alt")
+                .description("description")
+                .detail(detail)
+                .image("image")
+                .n_price(detail.getN_price())
+                .s_price(detail.getS_price())
+                .title("title")
+                .build();
+
+
+        //menu 객체를 찾는다.
+        Menu menu = menuRepository.findById(1L).orElseThrow(() ->
+                new IllegalArgumentException("해당 menu가 없습니다."));
+
+        menu.add(AItem);
+
+        Menu each = menuRepository.save(menu);
+        assertThat(each.getId()).isEqualTo(1L);
+        logger.info("menu : {}", each);
+    }
+
 }

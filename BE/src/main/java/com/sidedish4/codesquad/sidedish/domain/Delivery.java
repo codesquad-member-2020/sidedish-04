@@ -13,4 +13,8 @@ public class Delivery {
     @Id
     private Long id;
     private String type;
+
+    public Delivery(String type) {
+        this.type = type;
+    }
 }

@@ -14,6 +14,7 @@
 		ABC9EF8F244EB4760086DC5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC9EF8E244EB4760086DC5A /* Assets.xcassets */; };
 		ABC9EF92244EB4760086DC5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC9EF90244EB4760086DC5A /* LaunchScreen.storyboard */; };
 		ABC9EF9B244EC7E60086DC5A /* ProductInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EF9A244EC7E60086DC5A /* ProductInfoCell.swift */; };
+		ABC9EF9D244ECA610086DC5A /* ProductTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EF9C244ECA610086DC5A /* ProductTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		ABC9EF91244EB4760086DC5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABC9EF93244EB4760086DC5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABC9EF9A244EC7E60086DC5A /* ProductInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCell.swift; sourceTree = "<group>"; };
+		ABC9EF9C244ECA610086DC5A /* ProductTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC9EF9A244EC7E60086DC5A /* ProductInfoCell.swift */,
+				ABC9EF9C244ECA610086DC5A /* ProductTableViewDataSource.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC9EF8A244EB4740086DC5A /* MainViewController.swift in Sources */,
+				ABC9EF9D244ECA610086DC5A /* ProductTableViewDataSource.swift in Sources */,
 				ABC9EF9B244EC7E60086DC5A /* ProductInfoCell.swift in Sources */,
 				ABC9EF86244EB4740086DC5A /* AppDelegate.swift in Sources */,
 				ABC9EF88244EB4740086DC5A /* SceneDelegate.swift in Sources */,

@@ -8,34 +8,17 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var mainTableView: UITableView!
     
+    let dataSource = ProductTableViewDataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTableView.dataSource = self
+        mainTableView.dataSource = dataSource
         mainTableView.delegate = self
         
     }
-}
-
-extension MainViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductInfoCell
-        
-        return cell!
-    }
-    
-    
-}
-
-extension MainViewController: UITableViewDelegate {
-    
 }
 

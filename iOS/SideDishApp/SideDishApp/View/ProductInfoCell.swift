@@ -11,8 +11,9 @@ import UIKit
 class ProductInfoCell: UITableViewCell {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productTitle: UILabel!
+    @IBOutlet weak var discountPrice: UILabel!
+    @IBOutlet weak var listPrice: UILabel!
     @IBOutlet weak var productSubTitle: UILabel!
-    @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var eventBagdeStackView: UIStackView!
     
     override func awakeFromNib() {

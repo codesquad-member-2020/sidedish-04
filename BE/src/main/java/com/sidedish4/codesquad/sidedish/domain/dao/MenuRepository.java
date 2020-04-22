@@ -1,4 +1,4 @@
-package com.sidedish4.codesquad.sidedish.domain;
+package com.sidedish4.codesquad.sidedish.domain.dao;
 
 import com.sidedish4.codesquad.sidedish.domain.entity.Menu;
 import org.springframework.data.repository.CrudRepository;

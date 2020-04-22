@@ -1,4 +1,4 @@
-package com.sidedish4.codesquad.sidedish.domain;
+package com.sidedish4.codesquad.sidedish.domain.entity;
 
 import org.springframework.data.annotation.Id;
 

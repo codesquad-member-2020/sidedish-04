@@ -1,8 +1,10 @@
-package com.sidedish4.codesquad.sidedish.domain;
+package com.sidedish4.codesquad.sidedish.domain.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Embedded;
+
+import java.util.Set;
 
 public class Item {
     @Id
@@ -17,10 +19,14 @@ public class Item {
     private String nPrice;
     @Column("sale_price")
     private String sPrice;
-
+    @Column("badge")
+    private Set<ItemBadge> badges;
+    @Column("delivery")
+    private Set<ItemDelivery> deliveries;
 
     @Embedded.Nullable
     private Detail detail;
+
 
     public Long getId() {
         return id;

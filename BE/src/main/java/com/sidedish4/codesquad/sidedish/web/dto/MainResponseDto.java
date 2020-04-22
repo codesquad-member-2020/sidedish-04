@@ -35,6 +35,4 @@ public class MainResponseDto {
         this.s_price = s_price;
         this.badge = badge;
     }
-
-
 }

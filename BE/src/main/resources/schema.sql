@@ -23,7 +23,6 @@ create table if not exists item
     alt                 varchar(100),
     description         varchar(1000),
     top_image           varchar(100),
-    product_description varchar(100),
     point               varchar(100),
     delivery_info       varchar(100),
     delivery_fee        varchar(100),

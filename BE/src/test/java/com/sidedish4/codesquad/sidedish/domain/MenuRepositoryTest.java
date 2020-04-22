@@ -28,10 +28,10 @@ public class MenuRepositoryTest {
 
     private Logger logger = LoggerFactory.getLogger(MenuRepositoryTest.class);
 
-//    @After
-//    public void tearDown() {
-//        menuRepository.deleteAll();
-//    }
+    @After
+    public void tearDown() {
+        menuRepository.deleteAll();
+    }
 
     @Test
     public void contextLoad() {

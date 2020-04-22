@@ -53,19 +53,6 @@ public class MenuRepositoryTest {
         logger.info("menu : {}", menu.toString());
     }
 
-    @Test
-    public void getDetail() {
-        Menu menu = menuRepository.findById(1L).orElseThrow(() ->
-                new IllegalArgumentException("해당 menu가 없습니다. "));
-        Detail detail = new Detail();
-        for (Item each : menu.getItems()) {
-            if (each.getId().equals(1L)) {
-               detail = each.getDetail();
-            }
-        }
-        assertThat(detail).isNotNull();
-        logger.info("detail : {}",detail);
-    }
 
     @Test
     public void saveMenu() {
@@ -83,19 +70,6 @@ public class MenuRepositoryTest {
                     .build());
         }
 
-        // Detail 객체를 만든다.
-        Detail detail = Detail.builder()
-                .topImage("topimage")
-                .detailSections(detailSections)
-                .thumbImages(thumbImages)
-                .deliveryFee("500원")
-                .deliveryInfo("제주는 5000원")
-                .n_price("5000원")
-                .s_price("3000원")
-                .point("400원")
-                .productDescription("싱싱해요")
-                .build();
-
         // delivery, badge 객체를 만든다.
         List<Badge> badges = Arrays.asList(new Badge("할인특가"), new Badge("이벤트특가"));
         List<Delivery> deliveries = Arrays.asList(new Delivery("새벽배송"), new Delivery("전국배송"));
@@ -106,13 +80,17 @@ public class MenuRepositoryTest {
                 .deliveries(deliveries)
                 .alt("alt")
                 .description("description")
-                .detail(detail)
-                .image("image")
-                .n_price(detail.getN_price())
-                .s_price(detail.getS_price())
                 .title("title")
+                .s_price("1000원")
+                .n_price("500원")
+                .image("image")
+                .delivery_fee("delivery_fee")
+                .delivery_info("delivery_info")
+                .point("point")
+                .detailSections(detailSections)
+                .thumbImages(thumbImages)
+                .top_image("top_image")
                 .build();
-
 
         //menu 객체를 찾는다.
         Menu menu = menuRepository.findById(1L).orElseThrow(() ->

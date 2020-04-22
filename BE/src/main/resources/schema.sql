@@ -31,13 +31,12 @@ create table if not exists item
     menu_key            int
 );
 
-
 create table if not exists thumb_image
 (
     id         int not null auto_increment primary key,
     url        varchar(100),
-    item       int references item (id),
-    detail_key int
+    item        int references item (id),
+    item_key int
 );
 
 create table if not exists detail_section
@@ -45,7 +44,7 @@ create table if not exists detail_section
     id         int not null auto_increment primary key,
     url        varchar(100),
     item       int references item (id),
-    detail_key int
+    item_key int
 );
 
 create table if not exists badge

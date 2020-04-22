@@ -22,25 +22,4 @@ class EventBadgeLabel: UILabel {
         contentSize.width += padding.left + padding.right
         return contentSize
     }
-    
-    override var text: String? {
-        didSet {
-            changeBackgroundColor(labelText: self.text)
-        }
-    }
-    
-    private func changeBackgroundColor(labelText: String?) {
-        guard let badgeString = labelText else { return }
-        
-        self.textColor = .white
-        self.font = UIFont.systemFont(ofSize: 13, weight: .medium)
-        
-        if badgeString.contains("특가") {
-            self.backgroundColor = UIColor(named: "SpecialPrice")
-        } else if badgeString.contains("증정") {
-            self.backgroundColor = UIColor(named: "Gift")
-        } else if badgeString.contains("품절"){
-            self.backgroundColor = .black
-        }
-    }
 }

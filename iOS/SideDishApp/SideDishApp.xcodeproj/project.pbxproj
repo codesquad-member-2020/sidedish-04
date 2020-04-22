@@ -21,6 +21,8 @@
 		ABC9EFAB244F163A0086DC5A /* SectionHeaderCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFAA244F163A0086DC5A /* SectionHeaderCategory.swift */; };
 		ABC9EFB1244F5D060086DC5A /* ProductTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFB0244F5D060086DC5A /* ProductTableViewHeader.swift */; };
 		ABC9EFB3244F66710086DC5A /* SectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC9EFB2244F66710086DC5A /* SectionHeader.xib */; };
+		ABC9EFB8245063750086DC5A /* EventBadgeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */; };
+		ABC9EFBA245064CC0086DC5A /* EventBadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFB9245064CC0086DC5A /* EventBadgeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		ABC9EFAA244F163A0086DC5A /* SectionHeaderCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCategory.swift; sourceTree = "<group>"; };
 		ABC9EFB0244F5D060086DC5A /* ProductTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewHeader.swift; sourceTree = "<group>"; };
 		ABC9EFB2244F66710086DC5A /* SectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeader.xib; sourceTree = "<group>"; };
+		ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeProtocol.swift; sourceTree = "<group>"; };
+		ABC9EFB9245064CC0086DC5A /* EventBadgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 		ABC9EF84244EB4740086DC5A /* SideDishApp */ = {
 			isa = PBXGroup;
 			children = (
+				ABC9EFB424505E270086DC5A /* Model */,
 				ABC9EFA3244F0E8A0086DC5A /* Controller */,
 				ABC9EFA0244EE4180086DC5A /* Util */,
 				ABC9EF99244EC7C90086DC5A /* View */,
@@ -102,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC9EF9E244EE4120086DC5A /* ExtensionString.swift */,
+				ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -113,6 +119,14 @@
 				ABC9EFA4244F0EA30086DC5A /* ProductTableViewDelegate.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		ABC9EFB424505E270086DC5A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABC9EFB9245064CC0086DC5A /* EventBadgeViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,10 +203,12 @@
 			files = (
 				ABC9EFA5244F0EA30086DC5A /* ProductTableViewDelegate.swift in Sources */,
 				ABC9EFAB244F163A0086DC5A /* SectionHeaderCategory.swift in Sources */,
+				ABC9EFB8245063750086DC5A /* EventBadgeProtocol.swift in Sources */,
 				ABC9EF8A244EB4740086DC5A /* MainViewController.swift in Sources */,
 				ABC9EF9D244ECA610086DC5A /* ProductTableViewDataSource.swift in Sources */,
 				ABC9EF9F244EE4120086DC5A /* ExtensionString.swift in Sources */,
 				ABC9EF9B244EC7E60086DC5A /* ProductInfoCell.swift in Sources */,
+				ABC9EFBA245064CC0086DC5A /* EventBadgeViewModel.swift in Sources */,
 				ABC9EFB1244F5D060086DC5A /* ProductTableViewHeader.swift in Sources */,
 				ABC9EF86244EB4740086DC5A /* AppDelegate.swift in Sources */,
 				ABC9EF88244EB4740086DC5A /* SceneDelegate.swift in Sources */,

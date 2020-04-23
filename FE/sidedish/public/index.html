@@ -9,20 +9,25 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <title>React App</title>
+       <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    />
+    <title>sidedish</title>
   </head>
   <body>
     <div id="root">
-      
-      <header>
+
+      <!-- header -->
+      <header id="sidedish__header">
           <h1 class="blind">배민찬
             <a href="#">
               <img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/web/common/bmc-logo.png" alt="모바일 넘버원 반찬가게-배민프레시">
             </a>
           </h1>
           <form class="header__search">
-            <label for="sidedish-search">검색</label>
-            <input name="sidedish-search" id="sidedish-search" type="text">
+            <label for="search-input">검색</label>
+            <input name="search-input" id="search-input" type="text">
             <button type="submit" class="search__btn">
               <i class="fas fa-search"></i>
             </button>
@@ -32,7 +37,9 @@
             <li><a href="#"><span>이벤트</span></a></li>
           </ul>
       </header>
+      <!-- //header -->
         
+        <!-- nav -->
         <nav>
           <h2 class="blind">네비게이션</h2>무침
           <ul>
@@ -111,9 +118,12 @@
               </li>
           </ul>
         </nav>
+        <!-- //nav -->
 
-      <main>
+      <main id="sidedish__best-sidedish">
         <h2 class="blind">베스트반찬</h2>
+
+      <!-- sidedish section -->
         <section class="best-sidedish__wrap">
           <div class="best-sidedish__container">
               <h3>밑반찬</h3>
@@ -129,8 +139,8 @@
                       </div>
                    </div>
                    <dl>
-                     <dt class="item__title"></dt>
-                     <dd class="item__desc"></dd>
+                     <dt class="item__title">[잡밥의완성]두부시래기조림 300g</dt>
+                     <dd class="item__desc">칼칼해서 더 좋아요</dd>
                      <dd class="item__price">
                        <p class="price__selling">3,050<span>원</span></p>
                        <p class="price__origin">4,050<span>원</span></p>
@@ -147,8 +157,8 @@
                       </div>
                    </div>
                    <dl>
-                     <dt class="item__title"></dt>
-                     <dd class="item__desc"></dd>
+                     <dt class="item__title">[잡밥의완성]두부시래기조림 300g</dt>
+                     <dd class="item__desc">칼칼해서 더 좋아요</dd>
                      <dd class="item__price">
                        <p class="price__selling">3,050<span>원</span></p>
                      </dd>
@@ -163,6 +173,9 @@
             <i class="fas fa-chevron-right"><span class="blind">오른쪽으로 이동</span></i>
           </div>
         </section>
+      <!-- //sidedish section -->
+
+      <!-- sidedish section -->
         <section class="best-sidedish__wrap">
           <div class="best-sidedish__container">
               <h3>든든한 반찬</h3>
@@ -178,8 +191,8 @@
                       </div>
                    </div>
                    <dl>
-                     <dt class="item__title"></dt>
-                     <dd class="item__desc"></dd>
+                     <dt class="item__title">[잡밥의완성]두부시래기조림 300g</dt>
+                     <dd class="item__desc">칼칼해서 더 좋아요</dd>
                      <dd class="item__price">
                        <p class="price__selling">3,050<span>원</span></p>
                        <p class="price__origin">4,050<span>원</span></p>
@@ -196,8 +209,8 @@
                       </div>
                    </div>
                    <dl>
-                     <dt class="item__title"></dt>
-                     <dd class="item__desc"></dd>
+                     <dt class="item__title">[잡밥의완성]두부시래기조림 300g</dt>
+                     <dd class="item__desc">칼칼해서 더 좋아요</dd>
                      <dd class="item__price">
                        <p class="price__selling">3,050<span>원</span></p>
                      </dd>
@@ -212,6 +225,9 @@
             <i class="fas fa-chevron-right"><span class="blind">오른쪽으로 이동</span></i>
           </div>
         </section>
+      <!-- //sidedish section -->
+
+      <!-- sidedish section -->
         <section class="best-sidedish__wrap">
           <div class="best-sidedish__container">
               <h3>국, 찌개</h3>
@@ -227,8 +243,8 @@
                       </div>
                    </div>
                    <dl>
-                     <dt class="item__title"></dt>
-                     <dd class="item__desc"></dd>
+                     <dt class="item__title">[잡밥의완성]두부시래기조림 300g</dt>
+                     <dd class="item__desc">칼칼해서 더 좋아요</dd>
                      <dd class="item__price">
                        <p class="price__selling">3,050<span>원</span></p>
                        <p class="price__origin">4,050<span>원</span></p>
@@ -241,8 +257,8 @@
                       <img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt="">
                    </div>
                    <dl>
-                     <dt class="item__title"></dt>
-                     <dd class="item__desc"></dd>
+                     <dt class="item__title">[잡밥의완성]두부시래기조림 300g</dt>
+                     <dd class="item__desc">칼칼해서 더 좋아요</dd>
                      <dd class="item__price">
                        <p class="price__selling">3,050<span>원</span></p>
                      </dd>
@@ -257,13 +273,84 @@
             <i class="fas fa-chevron-right"><span class="blind">오른쪽으로 이동</span></i>
           </div>
         </section>
-        <div class="best-sidedish-more-btn">
+        <div class="best-sidedish__more-btn">
           <button>
             <span>반찬 전체보기</span>
             <i class="fas fa-chevron-right"></i>
          </button>
       </div>
+      <!-- //sidedish section -->
       </main>
+      
+            <!-- 상세페이지 -->
+            <div id="sidedish__detail-page">
+              <div class="detail-page__sidedish-info">
+                <div class="sidedish-info__img">
+                  <div class="sidedish-info__main-img">
+                    <img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt="">
+                  </div>
+                  <div class="sidedish-info__detail-img">
+                    <ul class="detail-img__list">
+                      <li class="detail-img__item">
+                        <img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt="">
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="sidedish-info__content">
+                  <h2 class="sidedish-info__title">[잡밥의완성]두부시래기조림 300g</h2>
+                  <div class="sidedish-info__desc">칼칼해서 더 좋아요</div>
+                  <table>
+                    <caption class="blind">상품정보</caption>
+                    <tbody class="sidedish-info__table">
+                      <tr>
+                        <th hscope="row">적립금</th>
+                        <td>42원</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">배송정보</th>
+                        <td>서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">배송비</th>
+                        <td>2500원(40000원 이상 구매시 무료)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="sidedish-info__price"><strong>4,200</strong>원</div>
+                  <form class="sidedish-info__count">
+                    <label for="count-production"></label>
+                    <input type="number" name="count-production" id="count-production"/>
+                  </form>
+                    <div class="sidedish-info__total-price">
+                      <span class="total-price__title">총 상품금액</span><span class="total-price__price"><strong>4,200</strong> 원</span>
+                    </div>
+                    <div class="sidedish-info__btn">
+                      <button><span>담기</span></button>
+                    </div>
+                </div>
+              </div>
+              <div class="detail-page__recommendation">
+                <div class="recommendation__title"><span>함께하면 더욱 맛있는 상품</span></div>
+                <div class="recommendation__img">
+                  <ul class="recommendation__img-list">
+                    <li class="recommendation__img-item"><img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt=""></li>
+                    <li class="recommendation__img-item"><img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt=""></li>
+                    <li class="recommendation__img-item"><img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt=""></li>
+                    <li class="recommendation__img-item"><img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt=""></li>
+                    <li class="recommendation__img-item"><img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt=""></li>
+                    <li class="recommendation__img-item"><img src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg" alt=""></li>
+                  </ul>
+                </div>
+              </div> 
+            </div>
+            <!-- //상세페이지 -->
     </div>
   </body>
 </html>

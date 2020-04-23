@@ -24,6 +24,12 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductInfoCell else { return UITableViewCell() }
         
+        if !cell.eventBagdeStackView.arrangedSubviews.isEmpty {
+            cell.eventBagdeStackView.arrangedSubviews.forEach { (badge) in
+                badge.removeFromSuperview()
+            }
+        }
+        
         eventBadgeTitle.forEach { (title) in
             let eventBadge = EventBadgeLabel()
             labelViewModel = EventBadgeViewModel(labelText: title)

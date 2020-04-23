@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet weak var mainTableView: UITableView!
     
     let dataSource = ProductTableViewDataSource()
@@ -17,12 +17,19 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //mainTableView.register(ProductTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "header")
+        
         let nib = UINib(nibName: "SectionHeader", bundle: nil)
         mainTableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
         mainTableView.delegate = delegate
         mainTableView.dataSource = dataSource
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        if let loginScreen = self.storyboard?.instantiateViewController(withIdentifier: "Login"){
+            self.present(loginScreen, animated: true, completion: nil)
+        }
     }
 }
 

@@ -23,6 +23,7 @@
 		ABC9EFB3244F66710086DC5A /* SectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC9EFB2244F66710086DC5A /* SectionHeader.xib */; };
 		ABC9EFB8245063750086DC5A /* EventBadgeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */; };
 		ABC9EFBA245064CC0086DC5A /* EventBadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFB9245064CC0086DC5A /* EventBadgeViewModel.swift */; };
+		ABC9EFBC2451751C0086DC5A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFBB2451751C0086DC5A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		ABC9EFB2244F66710086DC5A /* SectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeader.xib; sourceTree = "<group>"; };
 		ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeProtocol.swift; sourceTree = "<group>"; };
 		ABC9EFB9245064CC0086DC5A /* EventBadgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeViewModel.swift; sourceTree = "<group>"; };
+		ABC9EFBB2451751C0086DC5A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC9EF89244EB4740086DC5A /* MainViewController.swift */,
+				ABC9EFBB2451751C0086DC5A /* LoginViewController.swift */,
 				ABC9EFA4244F0EA30086DC5A /* ProductTableViewDelegate.swift */,
 			);
 			path = Controller;
@@ -212,6 +215,7 @@
 				ABC9EFB1244F5D060086DC5A /* ProductTableViewHeader.swift in Sources */,
 				ABC9EF86244EB4740086DC5A /* AppDelegate.swift in Sources */,
 				ABC9EF88244EB4740086DC5A /* SceneDelegate.swift in Sources */,
+				ABC9EFBC2451751C0086DC5A /* LoginViewController.swift in Sources */,
 				ABC9EFA2244EEAC00086DC5A /* EventBadgeLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

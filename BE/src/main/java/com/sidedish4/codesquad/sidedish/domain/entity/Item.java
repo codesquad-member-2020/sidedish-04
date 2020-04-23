@@ -1,9 +1,11 @@
 package com.sidedish4.codesquad.sidedish.domain.entity;
 
+import lombok.Generated;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Embedded;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Item {
@@ -20,13 +22,24 @@ public class Item {
     @Column("sale_price")
     private String sPrice;
     @Column("badge")
-    private Set<ItemBadge> badges;
+    private Set<ItemBadge> badges = new HashSet<>();
     @Column("delivery")
-    private Set<ItemDelivery> deliveries;
+    private Set<ItemDelivery> deliveries = new HashSet<>();
+//
+//    @Embedded.Empty
+//    private Detail detail;
+//
+    public Item() {}
 
-    @Embedded.Nullable
-    private Detail detail;
+    public void addBadge(Badge badge) {
+        ItemBadge itemBadge = new ItemBadge(badge.getId());
+        badges.add(itemBadge);
+    }
 
+    public void addDelivery(Delivery delivery) {
+        ItemDelivery itemDelivery = new ItemDelivery(delivery.getId());
+        deliveries.add(itemDelivery);
+    }
 
     public Long getId() {
         return id;
@@ -87,14 +100,14 @@ public class Item {
     public void setsPrice(String sPrice) {
         this.sPrice = sPrice;
     }
-
-    public Detail getDetail() {
-        return detail;
-    }
-
-    public void setDetail(Detail detail) {
-        this.detail = detail;
-    }
+//
+//    public Detail getDetail() {
+//        return detail;
+//    }
+//
+//    public void setDetail(Detail detail) {
+//        this.detail = detail;
+//    }
 
     @Override
     public String toString() {
@@ -107,7 +120,9 @@ public class Item {
                 ", description='" + description + '\'' +
                 ", nPrice='" + nPrice + '\'' +
                 ", sPrice='" + sPrice + '\'' +
-                ", detail=" + detail +
+                ", badges=" + badges +
+                ", deliveries=" + deliveries +
+//                ", detail=" + detail +
                 '}';
     }
 }

@@ -2,14 +2,14 @@ package com.sidedish4.codesquad.sidedish.domain.entity;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
     @Id
     private Long id;
     private String menuName;
-
-    private List<Item> items;
+    private List<Item> items = new ArrayList<>();
 
     public Long getId() {
         return id;

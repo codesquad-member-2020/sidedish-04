@@ -2,18 +2,16 @@ package com.sidedish4.codesquad.sidedish.domain.entity;
 
 import org.springframework.data.relational.core.mapping.Column;
 
-import java.util.List;
-
 public class Detail {
     @Column("product_description")
     private String productDescription;
     private String point;
     private String deliveryInfo;
     private String deliveryFee;
-    @Column("detail_section")
-    private List<DetailImage> detailSection;
-    @Column("thumb_image")
-    private List<ThumbImage> thumbImage;
+//    @Column("detail_section")
+//    private List<DetailImage> detailSection;
+//    @Column("thumb_image")
+//    private List<ThumbImage> thumbImage;
 
     public String getProductDescription() {
         return productDescription;

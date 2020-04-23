@@ -46,4 +46,9 @@ public class SidedishApiController {
     public String reverseProxy() {
         return "reverseProxy";
     }
+
+    @GetMapping("bootWar")
+    public String bootWar() {
+        return "bootWar";
+    }
 }

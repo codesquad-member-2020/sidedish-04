@@ -41,4 +41,9 @@ public class SidedishApiController {
         }
         return "success";
     }
+
+    @GetMapping("reverseProxy")
+    public String reverseProxy() {
+        return "reverseProxy";
+    }
 }

@@ -1,7 +1,10 @@
 package com.sidedish4.codesquad.sidedish.domain.entity;
 
+import lombok.Data;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("item_badge")
 public class ItemBadge {
     @Column("badge")
     private Long badgeId;

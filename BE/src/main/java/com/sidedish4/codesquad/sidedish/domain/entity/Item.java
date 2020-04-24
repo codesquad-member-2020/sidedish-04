@@ -28,21 +28,23 @@ public class Item {
 //
 //    @Embedded.Empty
 //    private Detail detail;
-//
-    public Item() {}
 
     public void addBadge(Badge badge) {
         ItemBadge itemBadge = new ItemBadge(badge.getId());
-        badges.add(itemBadge);
+        this.badges.add(itemBadge);
     }
 
     public void addDelivery(Delivery delivery) {
         ItemDelivery itemDelivery = new ItemDelivery(delivery.getId());
-        deliveries.add(itemDelivery);
+        this.deliveries.add(itemDelivery);
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDetailHash() {
@@ -100,29 +102,20 @@ public class Item {
     public void setsPrice(String sPrice) {
         this.sPrice = sPrice;
     }
-//
-//    public Detail getDetail() {
-//        return detail;
-//    }
-//
-//    public void setDetail(Detail detail) {
-//        this.detail = detail;
-//    }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", detailHash='" + detailHash + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", alt='" + alt + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", nPrice='" + nPrice + '\'' +
-                ", sPrice='" + sPrice + '\'' +
-                ", badges=" + badges +
-                ", deliveries=" + deliveries +
-//                ", detail=" + detail +
-                '}';
+    public Set<ItemBadge> getBadges() {
+        return badges;
+    }
+
+    public void setBadges(Set<ItemBadge> badges) {
+        this.badges = badges;
+    }
+
+    public Set<ItemDelivery> getDeliveries() {
+        return deliveries;
+    }
+
+    public void setDeliveries(Set<ItemDelivery> deliveries) {
+        this.deliveries = deliveries;
     }
 }

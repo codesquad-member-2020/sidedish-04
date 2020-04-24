@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {Component,Fragment} from 'react';
 import Header from './conponents/Header/Header'
 import {URL} from '../src/constant/url'
+import  styled  from 'styled-components';
 
+export const Wrap = styled.div`
+  margin: 50px auto;
+`
 
-
-class App extends React.Component {
+class App extends Component {
   state = {
     isLogin : true
   }
@@ -20,8 +23,13 @@ class App extends React.Component {
   }
   render(){
     return(
-      <Header />
-
+      // <Fragment>
+        <>
+       <Wrap>
+          <Header />
+        </Wrap>
+        </>
+    // </Fragment>
     )
   }
 }

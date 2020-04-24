@@ -6,7 +6,10 @@ function Nav(){
    return (
        <nav>
          <ul>
-             {navList.map(nav => <li>{nav.name}</li>)}
+             {navList.map(nav => 
+             <li key={nav.id}>
+                 <span>{nav.name}</span>
+            </li>)}
          </ul>
        </nav>
    )

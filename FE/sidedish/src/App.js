@@ -1,10 +1,17 @@
 import React, {Component,Fragment} from 'react';
 import Header from './conponents/Header/Header'
+import Nav from './conponents/Nav'
 import {URL} from '../src/constant/url'
 import  styled  from 'styled-components';
+// import {createGlobalStyle} from 'styled-components';
+
+
+// export const GlobalStyled = createGlobalStyle`
+// body{
+// }`
 
 export const Wrap = styled.div`
-  margin: 50px auto;
+  margin: 0 auto;
 `
 
 class App extends Component {
@@ -27,6 +34,7 @@ class App extends Component {
         <>
        <Wrap>
           <Header />
+          <Nav/>
         </Wrap>
         </>
     // </Fragment>

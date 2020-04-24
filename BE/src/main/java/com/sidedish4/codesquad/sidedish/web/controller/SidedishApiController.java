@@ -2,8 +2,9 @@ package com.sidedish4.codesquad.sidedish.web.controller;
 
 import com.sidedish4.codesquad.sidedish.domain.Item;
 import com.sidedish4.codesquad.sidedish.service.SideDishService;
-import com.sidedish4.codesquad.sidedish.web.Message.ResponseMessage;
 import com.sidedish4.codesquad.sidedish.web.dto.AllMainResponseDto;
+import com.sidedish4.codesquad.sidedish.web.dto.DetailResponseDto;
+import com.sidedish4.codesquad.sidedish.web.dto.EachDetailResponseDto;
 import com.sidedish4.codesquad.sidedish.web.dto.MainResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -52,8 +53,20 @@ public class SidedishApiController {
     }
 
     @GetMapping("/{menuName}")
-    public ResponseEntity<AllMainResponseDto> mainSideDish(@PathVariable("menuName") String menuName) {
+    public ResponseEntity<AllMainResponseDto> menuItems(@PathVariable("menuName") String menuName) {
         List<MainResponseDto> result = sideDishService.returnMenuItems(menuName);
-        return new ResponseEntity<>(new AllMainResponseDto("Ok",result), HttpStatus.OK);
+        return new ResponseEntity<>(new AllMainResponseDto("Ok", result), HttpStatus.OK);
+    }
+
+    @GetMapping("/{menuName}/{id}")
+    public ResponseEntity<MainResponseDto> menuItem(@PathVariable("id") Long id,@PathVariable("menuName") String menuName) {
+        MainResponseDto result = sideDishService.returnMenuItem(id,menuName);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/detail/{detailHash}")
+    public ResponseEntity<EachDetailResponseDto> detailItem(@PathVariable("detailHash") String deailHash) {
+        DetailResponseDto result = sideDishService.returnDeatailItem(deailHash);
+        return new ResponseEntity<>(new EachDetailResponseDto(deailHash, result), HttpStatus.OK);
     }
 }

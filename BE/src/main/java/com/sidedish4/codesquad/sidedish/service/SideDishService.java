@@ -2,11 +2,13 @@ package com.sidedish4.codesquad.sidedish.service;
 
 import com.google.gson.Gson;
 import com.sidedish4.codesquad.sidedish.domain.*;
+import com.sidedish4.codesquad.sidedish.web.dto.DetailResponseDto;
 import com.sidedish4.codesquad.sidedish.web.dto.EachDetailResponseDto;
 import com.sidedish4.codesquad.sidedish.web.dto.MainResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -107,5 +109,41 @@ public class SideDishService {
             result.add(mainResponseDto);
         });
         return result;
+    }
+
+    public MainResponseDto returnMenuItem(Long id, String menuName) {
+        Map<String, String> map = new HashMap<>();
+        map.put("main", "든든한 반찬");
+        map.put("soup", "국");
+        map.put("side", "밑반찬");
+        Item item = menuRepository.findItemByIdAndMenuName(id,map.get(menuName)).orElseThrow(() ->
+            new IllegalArgumentException("해당 메뉴는 없습니다. menuName : " + menuName));
+
+            List<Delivery> deliveries = new ArrayList<>();
+            List<Badge> badges = new ArrayList<>();
+
+            if (item.getDeliveries() != null) deliveries = item.getDeliveries();
+            if (item.getBadges() != null) badges = item.getBadges();
+
+            List<String> deliveryType = new ArrayList<>();
+            List<String> badgeName = new ArrayList<>();
+            deliveries.stream().forEach(delivery -> {
+                deliveryType.add(delivery.getType());
+            });
+            badges.stream().forEach(badge -> {
+                badgeName.add(badge.getName());
+            });
+
+            MainResponseDto mainResponseDto = new MainResponseDto(
+                    item.getId().toString(), item.getImage(), item.getAlt(), deliveryType, item.getTitle(),
+                    item.getDescription(), item.getN_price(), item.getS_price(), badgeName
+            );
+        return mainResponseDto;
+    }
+
+    public DetailResponseDto returnDeatailItem(String detailHash) {
+        DetailResponseDto detailResponseDto = menuRepository.findDetailByItemId(detailHash).orElseThrow(() ->
+                new IllegalArgumentException("해당 메뉴는 없습니다. menuName : " + detailHash));
+        return detailResponseDto;
     }
 }

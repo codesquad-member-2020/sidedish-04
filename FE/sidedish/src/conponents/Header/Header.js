@@ -1,6 +1,4 @@
 import React from 'react'
-import {navList} from '../../constant/nav'
-import Nav from './Nav'
 import SearchBar from './SearchBar'
 
 import styled from 'styled-components';
@@ -12,8 +10,11 @@ const HeaderWrap = styled.header`
     display:flex;
     justify-content: center;
     align-items: center;
+    height: 150px;
     
-`
+    `
+
+
 
 function Header(){
     return (

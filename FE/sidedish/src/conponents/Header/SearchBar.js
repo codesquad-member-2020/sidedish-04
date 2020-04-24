@@ -12,6 +12,9 @@ const Input = styled.input`
 `
 
 const Button = styled.button`
+    position:absolute;
+    top: 59px;
+    right: 489px;
     color: #cfd0d2
 `
 

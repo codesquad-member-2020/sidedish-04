@@ -8,10 +8,11 @@ import styled from 'styled-components';
 
 const HeaderWrap = styled.header`
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 150px;
-    
+    width: 960px;
+    margin:0 auto;
     `
 
 
@@ -24,7 +25,6 @@ function Header(){
              </h1>
              <SearchBar/>
         </HeaderWrap>
-            //  <Nav/>
     )
 }
 

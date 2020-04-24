@@ -10,7 +10,7 @@ const NavWrap = styled.nav`
 
 const Ul = styled.ul`
   display:flex;
-  justify-content: space-around;
+  justify-content: space-between;
     align-items: center;
     margin: 0 auto;
   height:inherit;

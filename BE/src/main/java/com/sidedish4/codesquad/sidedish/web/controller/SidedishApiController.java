@@ -1,12 +1,16 @@
 package com.sidedish4.codesquad.sidedish.web.controller;
 
-import com.sidedish4.codesquad.sidedish.domain.Menu;
+import com.sidedish4.codesquad.sidedish.domain.Item;
 import com.sidedish4.codesquad.sidedish.service.SideDishService;
+import com.sidedish4.codesquad.sidedish.web.Message.ResponseMessage;
+import com.sidedish4.codesquad.sidedish.web.dto.AllMainResponseDto;
+import com.sidedish4.codesquad.sidedish.web.dto.MainResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,5 +49,11 @@ public class SidedishApiController {
     @GetMapping("reverseProxy")
     public String reverseProxy() {
         return "reverseProxy";
+    }
+
+    @GetMapping("/{menuName}")
+    public ResponseEntity<AllMainResponseDto> mainSideDish(@PathVariable("menuName") String menuName) {
+        List<MainResponseDto> result = sideDishService.returnMenuItems(menuName);
+        return new ResponseEntity<>(new AllMainResponseDto("Ok",result), HttpStatus.OK);
     }
 }

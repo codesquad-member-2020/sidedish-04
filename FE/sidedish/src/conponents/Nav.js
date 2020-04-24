@@ -1,5 +1,6 @@
 import {navList} from '../constant/nav'
 import styled from 'styled-components';
+import Layout from './Global'
 import React from 'react'
 
 const NavWrap = styled.nav`
@@ -9,12 +10,8 @@ const NavWrap = styled.nav`
 `
 
 const Ul = styled.ul`
-  display:flex;
-  justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-  height:inherit;
-  width: 960px;
+  ${Layout};
+    height:inherit;
   `
 
 const Li = styled.li`

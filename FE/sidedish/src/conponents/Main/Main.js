@@ -11,7 +11,7 @@ function Main (){
     
     return(
         <MainWrap>
-        <Carousel/>
+           <Carousel/>
         </MainWrap>
 
     )

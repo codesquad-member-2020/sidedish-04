@@ -59,6 +59,7 @@ public class SidedishApicontrollerTest {
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody().getDetail_hash()).isEqualTo("1");
+        logger.info("Amain : {}", responseEntity.getBody());
     }
 
     @Test
@@ -76,5 +77,6 @@ public class SidedishApicontrollerTest {
         //given
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody().getBody().size()).isEqualTo(2);
+        logger.info("Allmain : {}", responseEntity.getBody());
     }
 }

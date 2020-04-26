@@ -60,6 +60,27 @@ public class SidedishApiController {
         return "bootWar";
     }
 
+    @GetMapping("/{menuName}")
+    public ResponseEntity<AllItemResponseDto> getAllItem(@PathVariable String menuName) {
+
+        Map<String, Long> menuNames = new HashMap<String, Long>() {{
+            put("main", 1L);
+            put("soup", 2L);
+            put("side", 3L);
+        }};
+
+        Menu savedMenu = sideDishService.findById(menuNames.get(menuName));
+        logger.info("savedMenu : {}", savedMenu);
+        List<ItemResponseDto> itemResponseDtos = new ArrayList<>();
+        savedMenu.getItems().forEach(item -> itemResponseDtos.add(getItemResponseDto(item.getId(), savedMenu)));
+        AllItemResponseDto allItemResponseDto = AllItemResponseDto.builder()
+                .statusCode("200")
+                .body(itemResponseDtos)
+                .build();
+
+        return new ResponseEntity<>(allItemResponseDto, HttpStatus.OK);
+    }
+
     @GetMapping("/{menuName}/{id}")
     public ResponseEntity<ItemResponseDto> getAItem(@PathVariable String menuName,
                                                    @PathVariable Long id) {
@@ -92,23 +113,5 @@ public class SidedishApiController {
                 .build();
     }
 
-    @GetMapping("/{menuName}")
-    public ResponseEntity<AllItemResponseDto> getAllItem(@PathVariable String menuName) {
 
-        Map<String, Long> menuNames = new HashMap<String, Long>() {{
-            put("main", 1L);
-            put("soup", 2L);
-            put("side", 3L);
-        }};
-
-        Menu savedMenu = sideDishService.findById(menuNames.get(menuName));
-        List<ItemResponseDto> itemResponseDtos = new ArrayList<>();
-        savedMenu.getItems().forEach(item -> itemResponseDtos.add(getItemResponseDto(item.getId(), savedMenu)));
-        AllItemResponseDto allItemResponseDto = AllItemResponseDto.builder()
-                .statusCode("200")
-                .body(itemResponseDtos)
-                .build();
-
-        return new ResponseEntity<>(allItemResponseDto, HttpStatus.OK);
-    }
 }

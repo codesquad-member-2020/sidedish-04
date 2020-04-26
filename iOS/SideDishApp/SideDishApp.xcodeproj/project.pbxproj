@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EF656C9F312CDB67D49DC10 /* Pods_SideDishApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FABDDD943524A0976D3DB8 /* Pods_SideDishApp.framework */; };
+		ABC65FBB2452A00E00D111EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC65FBA2452A00E00D111EC /* NetworkManager.swift */; };
+		ABC65FBD2452A09500D111EC /* SideDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC65FBC2452A09500D111EC /* SideDish.swift */; };
+		ABC65FBF2452A58B00D111EC /* DataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC65FBE2452A58B00D111EC /* DataUseCase.swift */; };
 		ABC9EF86244EB4740086DC5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EF85244EB4740086DC5A /* AppDelegate.swift */; };
 		ABC9EF88244EB4740086DC5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EF87244EB4740086DC5A /* SceneDelegate.swift */; };
 		ABC9EF8A244EB4740086DC5A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EF89244EB4740086DC5A /* MainViewController.swift */; };
@@ -24,9 +28,17 @@
 		ABC9EFB8245063750086DC5A /* EventBadgeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */; };
 		ABC9EFBA245064CC0086DC5A /* EventBadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFB9245064CC0086DC5A /* EventBadgeViewModel.swift */; };
 		ABC9EFBC2451751C0086DC5A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9EFBB2451751C0086DC5A /* LoginViewController.swift */; };
+		ABEA7491245464620038C1AE /* DetailSideDishInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEA7490245464620038C1AE /* DetailSideDishInfo.swift */; };
+		ABEA7493245467E50038C1AE /* ExtensionNotificaitonName.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEA7492245467E50038C1AE /* ExtensionNotificaitonName.swift */; };
+		ABEA749524553C090038C1AE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEA749424553C090038C1AE /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14310EBD906A85E5489212CF /* Pods-SideDishApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.debug.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.debug.xcconfig"; sourceTree = "<group>"; };
+		42C570B9639BA066BF3E2663 /* Pods-SideDishApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.release.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.release.xcconfig"; sourceTree = "<group>"; };
+		ABC65FBA2452A00E00D111EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		ABC65FBC2452A09500D111EC /* SideDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDish.swift; sourceTree = "<group>"; };
+		ABC65FBE2452A58B00D111EC /* DataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUseCase.swift; sourceTree = "<group>"; };
 		ABC9EF82244EB4740086DC5A /* SideDishApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDishApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC9EF85244EB4740086DC5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC9EF87244EB4740086DC5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +58,10 @@
 		ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeProtocol.swift; sourceTree = "<group>"; };
 		ABC9EFB9245064CC0086DC5A /* EventBadgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeViewModel.swift; sourceTree = "<group>"; };
 		ABC9EFBB2451751C0086DC5A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ABEA7490245464620038C1AE /* DetailSideDishInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSideDishInfo.swift; sourceTree = "<group>"; };
+		ABEA7492245467E50038C1AE /* ExtensionNotificaitonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNotificaitonName.swift; sourceTree = "<group>"; };
+		ABEA749424553C090038C1AE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		B3FABDDD943524A0976D3DB8 /* Pods_SideDishApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +69,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EF656C9F312CDB67D49DC10 /* Pods_SideDishApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6669DDE5DFE31C42717FEB16 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				14310EBD906A85E5489212CF /* Pods-SideDishApp.debug.xcconfig */,
+				42C570B9639BA066BF3E2663 /* Pods-SideDishApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		ABC9EF79244EB4740086DC5A = {
 			isa = PBXGroup;
 			children = (
 				ABC9EF84244EB4740086DC5A /* SideDishApp */,
 				ABC9EF83244EB4740086DC5A /* Products */,
+				6669DDE5DFE31C42717FEB16 /* Pods */,
+				D115CA07700002CEDCCC6C2A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,8 +136,12 @@
 		ABC9EFA0244EE4180086DC5A /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				ABC9EF9E244EE4120086DC5A /* ExtensionString.swift */,
+				ABC65FBA2452A00E00D111EC /* NetworkManager.swift */,
+				ABC65FBE2452A58B00D111EC /* DataUseCase.swift */,
+				ABEA749424553C090038C1AE /* DataManager.swift */,
 				ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */,
+				ABC9EF9E244EE4120086DC5A /* ExtensionString.swift */,
+				ABEA7492245467E50038C1AE /* ExtensionNotificaitonName.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -128,8 +160,18 @@
 			isa = PBXGroup;
 			children = (
 				ABC9EFB9245064CC0086DC5A /* EventBadgeViewModel.swift */,
+				ABC65FBC2452A09500D111EC /* SideDish.swift */,
+				ABEA7490245464620038C1AE /* DetailSideDishInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D115CA07700002CEDCCC6C2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3FABDDD943524A0976D3DB8 /* Pods_SideDishApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,9 +181,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABC9EF96244EB4760086DC5A /* Build configuration list for PBXNativeTarget "SideDishApp" */;
 			buildPhases = (
+				D316548E9EC9A4FEEDA755B5 /* [CP] Check Pods Manifest.lock */,
 				ABC9EF7E244EB4740086DC5A /* Sources */,
 				ABC9EF7F244EB4740086DC5A /* Frameworks */,
 				ABC9EF80244EB4740086DC5A /* Resources */,
+				E3317967B8FD5C42EF1B3A97 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,6 +243,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D316548E9EC9A4FEEDA755B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SideDishApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3317967B8FD5C42EF1B3A97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SideDishApp/Pods-SideDishApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SideDishApp/Pods-SideDishApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SideDishApp/Pods-SideDishApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ABC9EF7E244EB4740086DC5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -209,14 +295,20 @@
 				ABC9EFB8245063750086DC5A /* EventBadgeProtocol.swift in Sources */,
 				ABC9EF8A244EB4740086DC5A /* MainViewController.swift in Sources */,
 				ABC9EF9D244ECA610086DC5A /* ProductTableViewDataSource.swift in Sources */,
+				ABC65FBD2452A09500D111EC /* SideDish.swift in Sources */,
 				ABC9EF9F244EE4120086DC5A /* ExtensionString.swift in Sources */,
 				ABC9EF9B244EC7E60086DC5A /* ProductInfoCell.swift in Sources */,
 				ABC9EFBA245064CC0086DC5A /* EventBadgeViewModel.swift in Sources */,
+				ABEA7491245464620038C1AE /* DetailSideDishInfo.swift in Sources */,
 				ABC9EFB1244F5D060086DC5A /* ProductTableViewHeader.swift in Sources */,
 				ABC9EF86244EB4740086DC5A /* AppDelegate.swift in Sources */,
+				ABC65FBB2452A00E00D111EC /* NetworkManager.swift in Sources */,
 				ABC9EF88244EB4740086DC5A /* SceneDelegate.swift in Sources */,
+				ABEA749524553C090038C1AE /* DataManager.swift in Sources */,
 				ABC9EFBC2451751C0086DC5A /* LoginViewController.swift in Sources */,
+				ABEA7493245467E50038C1AE /* ExtensionNotificaitonName.swift in Sources */,
 				ABC9EFA2244EEAC00086DC5A /* EventBadgeLabel.swift in Sources */,
+				ABC65FBF2452A58B00D111EC /* DataUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +450,7 @@
 		};
 		ABC9EF97244EB4760086DC5A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14310EBD906A85E5489212CF /* Pods-SideDishApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +469,7 @@
 		};
 		ABC9EF98244EB4760086DC5A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42C570B9639BA066BF3E2663 /* Pods-SideDishApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -13,4 +13,8 @@ public class Badge {
     @Id
     private Long id;
     private String name;
+
+    public Badge(String name) {
+        this.name = name;
+    }
 }

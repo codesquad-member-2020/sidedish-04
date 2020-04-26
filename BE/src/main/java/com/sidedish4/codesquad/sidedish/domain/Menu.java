@@ -1,9 +1,6 @@
 package com.sidedish4.codesquad.sidedish.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
@@ -11,7 +8,6 @@ import java.util.List;
 
 
 @RequiredArgsConstructor
-@NoArgsConstructor
 @Getter
 public class Menu {
 
@@ -19,6 +15,12 @@ public class Menu {
     private Long id;
     private String name;
     private List<Item> items = new ArrayList<>();
+
+    @Builder
+    public Menu(String name, List<Item> items) {
+        this.name = name;
+        this.items = items;
+    }
 
     public Long getId() {
         return id;
@@ -39,5 +41,9 @@ public class Menu {
                 ", name='" + name + '\'' +
                 ", items=" + items +
                 '}';
+    }
+
+    public void add(Item item) {
+        items.add(item);
     }
 }

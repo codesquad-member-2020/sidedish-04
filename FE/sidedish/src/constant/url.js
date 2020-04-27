@@ -1,4 +1,3 @@
-const URL = 'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main';
-
+const URL = `http://15.164.33.98/api/sidedish/main`
 
 export {URL}

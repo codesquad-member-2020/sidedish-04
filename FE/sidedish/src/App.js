@@ -1,10 +1,10 @@
-import React, {Component,Fragment} from 'react';
-import Header from './conponents/Header/Header'
-import Nav from './conponents/Nav'
-import {URL} from '../src/constant/url'
-import  styled  from 'styled-components';
+import React, { Component } from "react";
+import Header from "./conponents/Header/Header";
+import Nav from "./conponents/Nav";
+import Main from "./conponents/Main/Main";
+import { URL } from "../src/constant/url";
+import styled from "styled-components";
 // import {createGlobalStyle} from 'styled-components';
-
 
 // export const GlobalStyled = createGlobalStyle`
 // body{
@@ -12,45 +12,44 @@ import  styled  from 'styled-components';
 
 export const Wrap = styled.div`
   margin: 0 auto;
-`
+`;
 
 class App extends Component {
   state = {
-    isLogin : true
-  }
+    isLogin: true,
+    sidedish: [],
+  };
 
-  getMenu = () =>{
-    fetch(URL)
-    .then(res => console.log(res))
-    // .then(data => console.log(data))
-  }
+  // getMenu = () => {
+  //   fetch(URL)
+  //     .then((res) => res.json())
+  //     .then((data) => this.setState({ data }));
+  // };
 
-  componentDidMount() {
-    this.getMenu();
-  }
-  render(){
-    return(
+  // componentDidMount() {
+  //   this.getMenu();
+  // }
+  render() {
+    return (
       // <Fragment>
-        <>
-       <Wrap>
+      <>
+        <Wrap>
           <Header />
-          <Nav/>
+          <Nav />
+          <Main />
         </Wrap>
-        </>
-    // </Fragment>
-    )
+      </>
+      // </Fragment>
+    );
   }
 }
 
+// return (
+//   <div className="App">
+//     <header className="App-header">
 
-  
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-        
-  
-  //     </header>
-  //   </div>
-  // );
+//     </header>
+//   </div>
+// );
 
 export default App;

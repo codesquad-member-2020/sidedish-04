@@ -1,17 +1,16 @@
 import React from 'react'
 import SearchBar from './SearchBar'
-
+import Layout from '../Global'
 import styled from 'styled-components';
 
 
 
 
+
+
 const HeaderWrap = styled.header`
-    display:flex;
-    justify-content: center;
-    align-items: center;
+   ${Layout};
     height: 150px;
-    
     `
 
 
@@ -24,7 +23,6 @@ function Header(){
              </h1>
              <SearchBar/>
         </HeaderWrap>
-            //  <Nav/>
     )
 }
 

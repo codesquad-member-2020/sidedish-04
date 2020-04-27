@@ -32,25 +32,7 @@ class Main extends Component {
     return (
       <MainWrap>
         <Title />
-        {/* {sidedishes.map((sidedish) => {
-          return (
-            <Carousel
-              detail_hash={sidedish.detail_hash}
-              image={sidedish.image}
-              alt={sidedish.alt}
-              delivery_type={sidedish.delivery_type}
-              title={sidedish.title}
-              description={sidedish.description}
-              n_price={sidedish.n_price}
-              s_price={sidedish.s_price}
-              badge={sidedish.badge}
-            />
-          );
-        })} */}
-
-        <Carousel />
-        <Title />
-        <Carousel />
+        <Carousel sidedishes={sidedishes} />
       </MainWrap>
     );
   }

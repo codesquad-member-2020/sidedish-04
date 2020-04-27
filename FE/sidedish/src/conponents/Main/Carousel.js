@@ -7,18 +7,8 @@ import "./Carousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Carousel({
-  detail_hash,
-  image,
-  alt,
-  delivery_type,
-  title,
-  description,
-  n_price,
-  s_price,
-  badge,
-}) {
-  console.log(title);
+function Carousel({ sidedishes }) {
+  console.log(sidedishes);
   const ArrowLeft = styled.button`
     /* width: 28px;
     height: 52px; */
@@ -39,7 +29,7 @@ function Carousel({
   //         {...props}
   //         className={'s.next'}/>
   // );
-  const slideSetting = {
+  const setting = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -81,8 +71,10 @@ function Carousel({
     /* text-overflow:hidden; */
     margin-bottom: 5px;
     font-size: 16px;
+    font-weight: bold;
     letter-spacing: -0.07em;
     overflow: hidden;
+    line-height: 1.5em;
   `;
 
   const ItemDesc = styled.dd`
@@ -91,6 +83,7 @@ function Carousel({
     color: #666;
     min-height: 16px;
     overflow: hidden;
+    line-height: 1.2em;
   `;
 
   const SellingPrice = styled.p`
@@ -114,101 +107,55 @@ function Carousel({
     justify-content: center;
     align-items: center;
   `;
+
+  const selectButton = (n_price, s_price) => {
+    if (n_price !== null) {
+      return (
+        <>
+          <SellingPrice>
+            {n_price}
+            <span>원</span>
+          </SellingPrice>
+          <OriginPrice>{s_price}</OriginPrice>
+        </>
+      );
+    } else {
+      return (
+        <SellingPrice>
+          {s_price} <span>원</span>
+        </SellingPrice>
+      );
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       {/* <CarouselWrap> */}
       <SliderWrap>
-        <Slider {...slideSetting}>
-          <Itme>
-            <ImgArea>
-              <Img
-                src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg"
-                alt=""
-              />
-            </ImgArea>
-            <ItemContent>
-              <ItemTitle>[잡밥의완성]두부시래기조림 300g</ItemTitle>
-              <ItemDesc>칼칼해서 더 좋아요</ItemDesc>
-              <Price>
-                <SellingPrice>
-                  3,050<span>원</span>
-                </SellingPrice>
-                <OriginPrice>4,050</OriginPrice>
-              </Price>
-            </ItemContent>
-          </Itme>
-          <Itme>
-            <ImgArea>
-              <Img
-                src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg"
-                alt=""
-              />
-            </ImgArea>
-            <ItemContent>
-              <ItemTitle>[잡밥의완성]두부시래기조림 300g</ItemTitle>
-              <ItemDesc>칼칼해서 더 좋아요</ItemDesc>
-              <Price>
-                <SellingPrice>
-                  3,050<span>원</span>
-                </SellingPrice>
-                <OriginPrice>4,050</OriginPrice>
-              </Price>
-            </ItemContent>
-          </Itme>
-          <Itme>
-            <ImgArea>
-              <Img
-                src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg"
-                alt=""
-              />
-            </ImgArea>
-            <ItemContent>
-              <ItemTitle>[잡밥의완성]두부시래기조림 300g</ItemTitle>
-              <ItemDesc>칼칼해서 더 좋아요</ItemDesc>
-              <Price>
-                <SellingPrice>
-                  3,050<span>원</span>
-                </SellingPrice>
-                <OriginPrice>4,050</OriginPrice>
-              </Price>
-            </ItemContent>
-          </Itme>
-          <Itme>
-            <ImgArea>
-              <Img
-                src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg"
-                alt=""
-              />
-            </ImgArea>
-            <ItemContent>
-              <ItemTitle>[잡밥의완성]두부시래기조림 300g</ItemTitle>
-              <ItemDesc>칼칼해서 더 좋아요</ItemDesc>
-              <Price>
-                <SellingPrice>
-                  3,050<span>원</span>
-                </SellingPrice>
-                <OriginPrice>4,050</OriginPrice>
-              </Price>
-            </ItemContent>
-          </Itme>
-          <Itme>
-            <ImgArea>
-              <Img
-                src="https://web.archive.org/web/20190122062652im_/https://cdn.bmf.kr/_data/product/I9E9A/ab4c422855875181ede52f6ac1954fde.jpg"
-                alt=""
-              />
-            </ImgArea>
-            <ItemContent>
-              <ItemTitle>[잡밥의완성]두부시래기조림 300g</ItemTitle>
-              <ItemDesc>칼칼해서 더 좋아요</ItemDesc>
-              <Price>
-                <SellingPrice>
-                  3,050<span>원</span>
-                </SellingPrice>
-                <OriginPrice>4,050</OriginPrice>
-              </Price>
-            </ItemContent>
-          </Itme>
+        <Slider {...setting}>
+          {sidedishes.map((sidedish) => {
+            const {
+              image,
+              alt,
+              title,
+              description,
+              n_price,
+              s_price,
+            } = sidedish;
+
+            return (
+              <Itme>
+                <ImgArea>
+                  <Img src={image} alt={alt} />
+                </ImgArea>
+                <ItemContent>
+                  <ItemTitle>{title}</ItemTitle>
+                  <ItemDesc>{description}</ItemDesc>
+                  <Price>{selectButton(n_price, s_price)}</Price>
+                </ItemContent>
+              </Itme>
+            );
+          })}
         </Slider>
       </SliderWrap>
       {/* </CarouselWrap> */}

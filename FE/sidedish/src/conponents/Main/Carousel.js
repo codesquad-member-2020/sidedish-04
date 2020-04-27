@@ -9,19 +9,28 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Carousel() {
 
-  const ArrowLeft = (props) => (
-    <button
-        {...props}
-        className={'s.prev'}/>
-);
-const ArrowRight = (props) => (
-    <button
-        {...props}
-        className={'s.next'}/>
-);
+  const ArrowLeft = styled.button`
+    /* width: 28px;
+    height: 52px; */
+    background-color: #666;
+  `
+  const ArrowRight = styled.button`
+    /* width: 28px;
+    height: 52px; */
+    background-color: #666;
+  `
+//   const ArrowLeft = (props) => (
+//     <button
+//         {...props}
+//         className={'s.prev'}/>
+// );
+// const ArrowRight = (props) => (
+//     <button
+//         {...props}
+//         className={'s.next'}/>
+// );
   const slideSetting = {
 
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -36,7 +45,7 @@ const ArrowRight = (props) => (
 
  const SliderWrap = styled.div`
  width:960px;
- margin:0 auto;
+ margin:60px auto;
 
  
 `

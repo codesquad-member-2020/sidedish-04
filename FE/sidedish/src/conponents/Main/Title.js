@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TitleWrap = styled.div`
-  margin: 20px 0;
+  margin: 50px 0;
   text-align: center; 
 `
 

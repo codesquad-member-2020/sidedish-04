@@ -14,6 +14,9 @@ function Main (){
         <MainWrap>
             <Title/>
            <Carousel/>
+           <Title/>
+
+           <Carousel/>
         </MainWrap>
 
     )

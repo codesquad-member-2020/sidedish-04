@@ -65,8 +65,8 @@ public class SidedishApiController {
     }
 
     @GetMapping("/detail/{detailHash}")
-    public ResponseEntity<EachDetailResponseDto> detailItem(@PathVariable("detailHash") String deailHash) {
+    public ResponseEntity<EachDetailResponseDto> detailItem(@PathVariable("detailHash") Long deailHash) {
         DetailResponseDto result = sideDishService.returnDeatailItem(deailHash);
-        return new ResponseEntity<>(new EachDetailResponseDto(deailHash, result), HttpStatus.OK);
+        return new ResponseEntity<>(new EachDetailResponseDto(deailHash.toString(), result), HttpStatus.OK);
     }
 }

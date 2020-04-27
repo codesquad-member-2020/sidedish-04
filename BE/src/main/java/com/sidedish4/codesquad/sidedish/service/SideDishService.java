@@ -22,6 +22,7 @@ import java.util.Map;
 public class SideDishService {
 
     private final MenuRepository menuRepository;
+    private final MenuDAO menuDAO;
     private final RestTemplate restTemplate;
     private Logger logger = LoggerFactory.getLogger(SideDishService.class);
 
@@ -141,9 +142,8 @@ public class SideDishService {
         return mainResponseDto;
     }
 
-    public DetailResponseDto returnDeatailItem(String detailHash) {
-        DetailResponseDto detailResponseDto = menuRepository.findDetailByItemId(detailHash).orElseThrow(() ->
-                new IllegalArgumentException("해당 메뉴는 없습니다. menuName : " + detailHash));
+    public DetailResponseDto returnDeatailItem(Long detailHash) {
+        DetailResponseDto detailResponseDto = menuDAO.findById(detailHash);
         return detailResponseDto;
     }
 }

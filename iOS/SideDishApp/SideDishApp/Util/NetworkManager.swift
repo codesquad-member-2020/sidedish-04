@@ -7,22 +7,18 @@
 //
 
 import Foundation
-import Alamofire
 
 class NetworkManager {
     public func requestData(url: String, completion: @escaping (_ data: Data?, _ error: Error?) -> ()) {
+        guard let requestURL = URL(string: url) else { return }
+        let request = URLRequest(url: requestURL)
         
-        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        URLSession.shared.dataTask(with: request) { (data, res, error) in
+            if let error = error { print(error); completion(nil, error) }
             
-            switch response.result {
-            case .success:
-                guard let result = response.data else { return }
-                completion(result, nil)
-                
-            case let .failure(error):
-                print(error)
-                completion(nil, error)
+            DispatchQueue.main.async {
+                completion(data, nil)
             }
-        }
+        }.resume()
     }
 }

@@ -20,12 +20,12 @@ const P = styled.p`
   }
 `;
 
-function Title() {
+function Title({ title, desc }) {
   return (
     <TitleWrap>
-      <H2>밑반찬</H2>
+      <H2>{title}</H2>
       <P>
-        언제 먹어도 든든한 <strong>밑반찬</strong>
+        {desc} <strong>{title}</strong>
       </P>
     </TitleWrap>
   );

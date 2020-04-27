@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import Slider from "react-slick";
+import { FlexCenter } from "../Global";
 import theme from "../theme";
 import "./Carousel.css";
 
@@ -50,11 +51,36 @@ function Carousel({ sidedishes }) {
     text-align: center;
   `;
 
+  const ImgShadow = styled.div`
+    ${FlexCenter};
+    visibility: hidden;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    width: inherit;
+    height: inherit;
+    opacity: 0.7;
+    span {
+      padding: 8px 0;
+      color: #fff;
+      border-bottom: 1px solid white;
+    }
+  `;
+
   const ImgArea = styled.div`
+    position: relative;
     height: 215px;
+    width: 210px;
     background: #f2f2f2;
     border-radius: 50%;
     overflow: hidden;
+    &:hover {
+      ${ImgShadow} {
+        visibility: visible;
+      }
+    }
   `;
 
   const Img = styled.img`
@@ -75,15 +101,21 @@ function Carousel({ sidedishes }) {
     letter-spacing: -0.07em;
     overflow: hidden;
     line-height: 1.5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   `;
 
   const ItemDesc = styled.dd`
-    margin-bottom: 4px;
-    font-size: 14px;
+    margin-bottom: 13px;
+    font-size: 13px;
     color: #666;
     min-height: 16px;
     overflow: hidden;
     line-height: 1.2em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   `;
 
   const SellingPrice = styled.p`
@@ -103,27 +135,47 @@ function Carousel({ sidedishes }) {
   `;
 
   const Price = styled.dd`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${FlexCenter}
+    margin-bottom: 13px;
+  `;
+
+  const EventBadge = styled.div`
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    margin: 5px;
+    span {
+      padding: 5px;
+      background-color: #fe346e;
+      font-size: 11px;
+      font-weight: bold;
+      color: #fff;
+    }
   `;
 
   const selectButton = (n_price, s_price) => {
     if (n_price !== null) {
       return (
         <>
-          <SellingPrice>
-            {n_price}
-            <span>원</span>
-          </SellingPrice>
-          <OriginPrice>{s_price}</OriginPrice>
+          <Price>
+            <SellingPrice>
+              {n_price}
+              <span> 원</span>
+            </SellingPrice>
+            <OriginPrice>{s_price}</OriginPrice>
+          </Price>
+          <EventBadge>
+            <span>이벤트특가</span>
+          </EventBadge>
         </>
       );
     } else {
       return (
-        <SellingPrice>
-          {s_price} <span>원</span>
-        </SellingPrice>
+        <Price>
+          <SellingPrice>
+            {s_price} <span> 원</span>
+          </SellingPrice>
+        </Price>
       );
     }
   };
@@ -141,17 +193,23 @@ function Carousel({ sidedishes }) {
               description,
               n_price,
               s_price,
+              delivery_type,
             } = sidedish;
 
             return (
               <Itme>
                 <ImgArea>
                   <Img src={image} alt={alt} />
+                  <ImgShadow>
+                    {delivery_type.map((deliveryType) => (
+                      <span>{deliveryType}</span>
+                    ))}
+                  </ImgShadow>
                 </ImgArea>
                 <ItemContent>
                   <ItemTitle>{title}</ItemTitle>
                   <ItemDesc>{description}</ItemDesc>
-                  <Price>{selectButton(n_price, s_price)}</Price>
+                  {selectButton(n_price, s_price)}
                 </ItemContent>
               </Itme>
             );

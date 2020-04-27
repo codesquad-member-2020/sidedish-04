@@ -43,9 +43,13 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
             cell.eventBagdeStackView.addArrangedSubview(eventBadge)
         }
         
-        cell.productTitle.text = currentSideDish?.title //"[마더앤찬] 국내산 수제 도토리 묵사발 한그릇"
-        cell.productSubTitle.text = currentSideDish?.description //"직접 쑨 수제 묵이라 더욱 쫄깃해요!"
-        cell.discountPrice.attributedText = ((currentSideDish?.n_price) ?? "").strikeThrough() //"7,900".strikeThrough()
+        DataManger().fetchImage(urlString: currentSideDish!.image, completion: { (image, error) in
+            cell.productImage.image = image ?? UIImage()
+        })
+        
+        cell.productTitle.text = currentSideDish?.title
+        cell.productSubTitle.text = currentSideDish?.description
+        cell.discountPrice.attributedText = ((currentSideDish?.n_price) ?? "").strikeThrough()
         cell.listPrice.text = currentSideDish?.s_price
         
         return cell

@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-class DataUseCase {
+final class DataUseCase {
     static let endpoint = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/"
     static let detailRequest = ["main", "soup", "side"]
     
@@ -41,6 +42,15 @@ class DataUseCase {
             } catch {
                 completion(nil, nil, error)
             }
+        }
+    }
+    
+    public static func loadImage(url: String, manager: NetworkManager, completion: @escaping (UIImage?) -> ()) {
+        manager.requestData(url: url) { (data, error) in
+            guard let data = data else { return }
+            let image = UIImage(data: data)
+
+            completion(image)
         }
     }
 }

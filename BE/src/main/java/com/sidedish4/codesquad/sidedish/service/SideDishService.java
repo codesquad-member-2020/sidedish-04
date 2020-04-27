@@ -79,71 +79,20 @@ public class SideDishService {
 
 
     public List<MainResponseDto> returnMenuItems(String menuName) {
-        Map<String, String> map = new HashMap<>();
-        map.put("main", "든든한 반찬");
-        map.put("soup", "국");
-        map.put("side", "밑반찬");
-
-        Menu menu = menuRepository.findByName(map.get(menuName)).orElseThrow(() ->
-                new IllegalArgumentException("해당 메뉴는 없습니다. menuName : " + menuName));
-        List<Item> items = menu.getItems();
-        List<MainResponseDto> result = new ArrayList<>();
-        items.stream().forEach(item -> {
-            List<Delivery> deliveries = new ArrayList<>();
-            List<Badge> badges = new ArrayList<>();
-
-            if (item.getDeliveries() != null) deliveries = item.getDeliveries();
-            if (item.getBadges() != null) badges = item.getBadges();
-
-            List<String> deliveryType = new ArrayList<>();
-            List<String> badgeName = new ArrayList<>();
-            deliveries.stream().forEach(delivery -> {
-                deliveryType.add(delivery.getType());
-            });
-            badges.stream().forEach(badge -> {
-                badgeName.add(badge.getName());
-            });
-            MainResponseDto mainResponseDto = new MainResponseDto(
-                    item.getId().toString(), item.getImage(), item.getAlt(), deliveryType, item.getTitle(),
-                    item.getDescription(), item.getN_price(), item.getS_price(), badgeName
-            );
-            result.add(mainResponseDto);
-        });
-        return result;
+        Map<String, Long> menuNames = new HashMap<String, Long>() {{
+            put("main", 1L);
+            put("soup", 2L);
+            put("side", 3L);
+        }};
+        return menuDAO.findMenuItemsByMenuId(menuNames.get(menuName));
     }
 
     public MainResponseDto returnMenuItem(Long id, String menuName) {
-        Map<String, String> map = new HashMap<>();
-        map.put("main", "든든한 반찬");
-        map.put("soup", "국");
-        map.put("side", "밑반찬");
-        Item item = menuRepository.findItemByIdAndMenuName(id,map.get(menuName)).orElseThrow(() ->
-            new IllegalArgumentException("해당 메뉴는 없습니다. menuName : " + menuName));
-
-            List<Delivery> deliveries = new ArrayList<>();
-            List<Badge> badges = new ArrayList<>();
-
-            if (item.getDeliveries() != null) deliveries = item.getDeliveries();
-            if (item.getBadges() != null) badges = item.getBadges();
-
-            List<String> deliveryType = new ArrayList<>();
-            List<String> badgeName = new ArrayList<>();
-            deliveries.stream().forEach(delivery -> {
-                deliveryType.add(delivery.getType());
-            });
-            badges.stream().forEach(badge -> {
-                badgeName.add(badge.getName());
-            });
-
-            MainResponseDto mainResponseDto = new MainResponseDto(
-                    item.getId().toString(), item.getImage(), item.getAlt(), deliveryType, item.getTitle(),
-                    item.getDescription(), item.getN_price(), item.getS_price(), badgeName
-            );
-        return mainResponseDto;
+        return menuDAO.findItemByItemId(id);
     }
 
     public DetailResponseDto returnDeatailItem(Long detailHash) {
-        DetailResponseDto detailResponseDto = menuDAO.findById(detailHash);
+        DetailResponseDto detailResponseDto = menuDAO.findDetailByItemId(detailHash);
         return detailResponseDto;
     }
 }

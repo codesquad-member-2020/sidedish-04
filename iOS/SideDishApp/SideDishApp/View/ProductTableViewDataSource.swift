@@ -10,19 +10,20 @@ import UIKit
 
 class ProductTableViewDataSource: NSObject, UITableViewDataSource {
     var labelViewModel: EventBadgeViewModel?
-    
-    let eventBadgeTitle = ["이벤트 특가", "사은품 증정"]
+    var sideDish = [Int:[DetailSideDishInfo]]()
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return sideDish[section]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductInfoCell else { return UITableViewCell() }
+        
+        let currentSideDish = sideDish[indexPath.section]?[indexPath.row]
         
         if !cell.eventBagdeStackView.arrangedSubviews.isEmpty {
             cell.eventBagdeStackView.arrangedSubviews.forEach { (badge) in
@@ -30,7 +31,7 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
             }
         }
         
-        eventBadgeTitle.forEach { (title) in
+        currentSideDish?.badge?.forEach { (title) in
             let eventBadge = EventBadgeLabel()
             labelViewModel = EventBadgeViewModel(labelText: title)
             
@@ -41,11 +42,11 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
             
             cell.eventBagdeStackView.addArrangedSubview(eventBadge)
         }
-
-        cell.productTitle.text = "[마더앤찬] 국내산 수제 도토리 묵사발 한그릇"
-        cell.productSubTitle.text = "직접 쑨 수제 묵이라 더욱 쫄깃해요!"
-        cell.discountPrice.attributedText = "7,900".strikeThrough()
-        cell.listPrice.text = "7,100원"
+        
+        cell.productTitle.text = currentSideDish?.title //"[마더앤찬] 국내산 수제 도토리 묵사발 한그릇"
+        cell.productSubTitle.text = currentSideDish?.description //"직접 쑨 수제 묵이라 더욱 쫄깃해요!"
+        cell.discountPrice.attributedText = ((currentSideDish?.n_price) ?? "").strikeThrough() //"7,900".strikeThrough()
+        cell.listPrice.text = currentSideDish?.s_price
         
         return cell
     }

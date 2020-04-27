@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     
     let dataSource = ProductTableViewDataSource()
     let delegate = ProductTableViewDelegate()
+    let dataManager = DataManger()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,16 @@ class MainViewController: UIViewController {
         mainTableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
         mainTableView.delegate = delegate
         mainTableView.dataSource = dataSource
+        
+        DataUseCase.loadAllDishes(manager: NetworkManager()) { (sideDish, indexNum, error) in
+            if error != nil {
+                print("Data load Error!") //알람창 뜨도록 변경할 것.
+                return
+            }
+            self.updateDataSource(sideDishInfo: sideDish!, indexNum: indexNum!)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataSource), name: .changeDataSourceValue, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +41,19 @@ class MainViewController: UIViewController {
         if let loginScreen = self.storyboard?.instantiateViewController(withIdentifier: "Login"){
             self.present(loginScreen, animated: true, completion: nil)
         }
+    }
+    
+    private func updateDataSource(sideDishInfo: [DetailSideDishInfo], indexNum: Int) {
+        dataManager.insertDish(dish: sideDishInfo, index: indexNum)
+    }
+    
+    @objc private func reloadDataSource(notification: Notification) {
+        guard let notificationInfo = notification.userInfo as? [String:Int] else { return }
+        let row = notificationInfo["reloadSection"]!
+        
+        dataSource.sideDish[row] = dataManager.allDishes[row]
+        //self.mainTableView.reloadData()
+        self.mainTableView.reloadSections(IndexSet(integersIn: row...row), with: .automatic)
     }
 }
 

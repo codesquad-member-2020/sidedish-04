@@ -4,17 +4,18 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Input = styled.input`
+
     margin:0 20px 0 60px;
     padding: 12px;
-    width: 500px;
+    width: 650px;
     height: 45px;
     border: 1px solid #cfd0d2;
 `
 
 const Button = styled.button`
-    position:absolute;
-    top: 59px;
-    right: 489px;
+    position:relative;
+    top: 5px;
+    right: 63px;
     color: #cfd0d2
 `
 

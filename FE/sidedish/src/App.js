@@ -1,6 +1,7 @@
 import React, {Component,Fragment} from 'react';
 import Header from './conponents/Header/Header'
 import Nav from './conponents/Nav'
+import Main from './conponents/Main/Main'
 import {URL} from '../src/constant/url'
 import  styled  from 'styled-components';
 // import {createGlobalStyle} from 'styled-components';
@@ -12,7 +13,7 @@ import  styled  from 'styled-components';
 
 export const Wrap = styled.div`
   margin: 0 auto;
-`
+  `
 
 class App extends Component {
   state = {
@@ -35,6 +36,7 @@ class App extends Component {
        <Wrap>
           <Header />
           <Nav/>
+          <Main/>
         </Wrap>
         </>
     // </Fragment>

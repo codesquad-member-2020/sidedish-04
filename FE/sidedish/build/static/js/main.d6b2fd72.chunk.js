@@ -1,2 +1,0 @@
-(this.webpackJsonpsidedish=this.webpackJsonpsidedish||[]).push([[0],{2:function(s,i,n){s.exports=n(9)},8:function(s,i,n){},9:function(s,i,n){"use strict";n.r(i);n(0),n(4),n(8)}},[[2,1,2]]]);
-//# sourceMappingURL=main.d6b2fd72.chunk.js.map

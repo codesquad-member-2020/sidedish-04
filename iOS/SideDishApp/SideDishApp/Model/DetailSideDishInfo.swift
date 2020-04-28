@@ -10,7 +10,7 @@ import Foundation
 
 struct DetailSideDishInfo: Decodable {
     let detail_hash: String
-    let image: URL
+    let image: String
     let alt: String
     let delivery_type: [String]
     let title: String

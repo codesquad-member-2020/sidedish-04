@@ -54,7 +54,7 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
         cell.productTitle.text = currentSideDish?.title
         cell.productSubTitle.text = currentSideDish?.description
         cell.discountPrice.attributedText = ((currentSideDish?.n_price) ?? "").strikeThrough()
-        cell.listPrice.text = currentSideDish?.s_price
+        cell.listPrice.text = (currentSideDish?.s_price ?? "") + "원"
         
         return cell
     }

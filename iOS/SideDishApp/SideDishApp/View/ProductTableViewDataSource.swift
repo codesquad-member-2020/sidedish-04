@@ -43,7 +43,7 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
             cell.eventBagdeStackView.addArrangedSubview(eventBadge)
         }
         
-        DataManger().fetchImage(urlString: currentSideDish!.image, completion: { (image, error) in
+        DataManger().fetchImage(url: currentSideDish!.image, completion: { (image, error) in
             cell.productImage.image = image ?? UIImage()
         })
         

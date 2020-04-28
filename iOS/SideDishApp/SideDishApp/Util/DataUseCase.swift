@@ -45,12 +45,10 @@ final class DataUseCase {
         }
     }
     
-    public static func loadImage(url: String, manager: NetworkManager, completion: @escaping (UIImage?) -> ()) {
-        manager.requestData(url: url) { (data, error) in
-            guard let data = data else { return }
-            let image = UIImage(data: data)
-
-            completion(image)
+    public static func loadImage(url: URL, manager: NetworkManager, completion: @escaping (URL?) -> ()) {
+        manager.requestImageData(url: url) { (url, error) in
+            guard let localURL = url else { return }
+            completion(localURL)
         }
     }
 }

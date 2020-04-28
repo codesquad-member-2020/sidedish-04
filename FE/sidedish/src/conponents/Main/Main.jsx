@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Carousel from "./Carousel";
 import MoreButton from "./MoreButton";
+import DetailPage from "../DetailPage/Detailpage";
 import { title } from "../../constant/title";
 import { MAIN_URL, SIDE_URL, SOUP_URL } from "../../constant/url";
 
@@ -17,6 +18,7 @@ class Main extends Component {
     maindishes: [],
     sidedishes: [],
     moreSidedishes: [],
+    detailPageId: null,
   };
 
   getMaindishes = () => {
@@ -49,25 +51,49 @@ class Main extends Component {
     this.getMoreSidedishes();
   }
 
-  // showMoreSidedishes() {
-  //   if (this.state.soup.length === 0) console.log(1);
-  // }
+  showDetailPage = () => {
+    const { detailPageId } = this.state;
+    console.log(detailPageId);
+    if (detailPageId) {
+      return (
+        <DetailPage
+          removeDetailPage={this.removeDetailPage}
+          detailPageId={detailPageId}
+        />
+      );
+    }
+  };
 
-  // showMore() {
-  //   console.log(2);
-  //   this.getSoup();
-  // }
+  setDetailPageId = (id) => {
+    console.log(id);
+    this.setState({ detailPageId: id });
+  };
+
+  removeDetailPageId = () => {
+    this.setState({ detailPageId: null });
+  };
 
   render() {
     const { maindishes, sidedishes, moreSidedishes } = this.state;
     const { main, side } = title;
+
     return (
       <MainWrap>
         <Title title={main.title} desc={main.desc} />
-        <Carousel sidedishes={maindishes} />
+        <Carousel
+          sidedishes={maindishes}
+          setDetailPageId={this.setDetailPageId}
+        />
         <Title title={side.title} desc={side.desc} />
-        <Carousel sidedishes={sidedishes} />
-        <MoreButton moreSidedishes={moreSidedishes} />
+        <Carousel
+          sidedishes={sidedishes}
+          setDetailPageId={this.setDetailPageId}
+        />
+        <MoreButton
+          moreSidedishes={moreSidedishes}
+          setDetailPageId={this.setDetailPageId}
+        />
+        {this.showDetailPage()}
       </MainWrap>
     );
   }

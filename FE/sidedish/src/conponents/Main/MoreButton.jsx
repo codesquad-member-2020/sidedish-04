@@ -33,7 +33,10 @@ class MoreButton extends Component {
       _content = (
         <>
           <Title title={soup.title} desc={soup.desc} />
-          <Carousel sidedishes={moreSidedishes} />
+          <Carousel
+            sidedishes={moreSidedishes}
+            setDetailPageId={this.props.setDetailPageId}
+          />
         </>
       );
     } else {

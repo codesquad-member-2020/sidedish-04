@@ -38,14 +38,8 @@ class DetailPage extends Component {
       .then((res) => res.json())
       .then((detailPage) => {
         this.saveData(detailPage.data);
-        // this.setState({ detailPage: detailPage.data });
       });
   };
-
-  //   getTitle = () => {
-  //     if (!this.props.detailPageTitle) return;
-  //     this.setState({ title: this.props.detailPageTitle });
-  //   };
 
   componentDidMount() {
     this.getDetailPage();

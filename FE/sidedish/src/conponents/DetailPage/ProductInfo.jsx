@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled, { ThemeProvider, css } from "styled-components";
 import detailpage from "../../constant/detailpage";
 import { FlexSpaceBetween } from "../Global";
+
 import theme from "../theme";
 
 const ProductInfoWrap = styled.div`
@@ -21,7 +22,7 @@ const Desc = styled.div`
 `;
 
 const SmallTitle = css`
-  color: #777;
+  color: #888;
   font-size: 14px;
   width: 100px;
   padding: 5px 10px 5px 0;
@@ -35,6 +36,11 @@ const Th = styled.th`
 
 const CountLabel = styled.label`
   ${SmallTitle};
+`;
+
+const SmallTitleSpan = styled.span`
+  ${SmallTitle};
+  font-weight: bold;
 `;
 
 const Td = styled.td`
@@ -73,17 +79,50 @@ const NumberInput = styled.input`
   ::-webkit-inner-spin-button {
     opacity: 1;
   }
-  margin: 30px 0;
+  margin: 15px 0;
   width: 50px;
   border: 1px solid #bbb;
 
   font-size: 14px;
 `;
+const TotalPriceWrap = styled.div`
+  text-align: right;
+`;
+
+const TotalPrice = styled.span`
+  font-size: 14px;
+  color: ${(props) => props.theme.sellingColor};
+  font-weight: bold;
+  strong {
+    color: ${(props) => props.theme.sellingColor};
+    font-size: 26px;
+  }
+`;
 
 function ProductInfo({ info, title }) {
+  const [totalPriceValue, setTotalPriceValue] = useState("0");
+  //   const [currentPrice, setCurrentPrice] = useState("");
+  const inputRef = useRef(null);
+  let currentPrice = null;
+
   const getInfo = (target) => {
     if (!info) return;
     return info[target];
+  };
+
+  const calculateTotalPrice = () => {
+    const currentCount = parseInt(inputRef.current.value);
+    const thousandWon = 1000;
+    const currentNumberPrice = parseInt(currentPrice) * thousandWon;
+    console.log(currentCount, currentNumberPrice);
+
+    const currentTotalPrice = numberFormat(currentCount * currentNumberPrice);
+
+    setTotalPriceValue(currentTotalPrice);
+  };
+
+  const numberFormat = (inputNumber) => {
+    return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   const getPrice = () => {
@@ -91,6 +130,7 @@ function ProductInfo({ info, title }) {
     if (!prices) return;
     if (prices.length > 1) {
       const [normalPrice, salePrice] = prices;
+      currentPrice = salePrice;
       return (
         <>
           <CurrentPrice>
@@ -101,6 +141,7 @@ function ProductInfo({ info, title }) {
       );
     } else {
       const [normalPrice] = prices;
+      currentPrice = normalPrice;
       return (
         <CurrentPrice>
           <strong>{normalPrice}</strong>원
@@ -109,7 +150,7 @@ function ProductInfo({ info, title }) {
     }
   };
 
-  const { point, deliveryInfo, deliveryFee, conut } = detailpage;
+  const { point, deliveryInfo, deliveryFee, conut, totalPrice } = detailpage;
 
   return (
     <ThemeProvider theme={theme}>
@@ -136,11 +177,20 @@ function ProductInfo({ info, title }) {
         <CountForm>
           <CountLabel for="count-production">{conut}</CountLabel>
           <NumberInput
+            ref={inputRef}
             type="number"
+            min="0"
             name="count-production"
             id="count-production"
+            onChange={calculateTotalPrice}
           />
         </CountForm>
+        <TotalPriceWrap>
+          <SmallTitleSpan>{totalPrice}</SmallTitleSpan>
+          <TotalPrice>
+            <strong>{totalPriceValue}</strong> 원
+          </TotalPrice>
+        </TotalPriceWrap>
       </ProductInfoWrap>
     </ThemeProvider>
   );

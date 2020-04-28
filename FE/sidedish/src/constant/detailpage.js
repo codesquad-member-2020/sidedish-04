@@ -3,7 +3,7 @@ const detailpage = {
   deliveryInfo: "배송정보",
   deliveryFee: "배송비",
   conut: "수량",
-  totalCount: "총 상품금액",
+  totalPrice: "총 상품금액",
 };
 
 export default detailpage;

@@ -40,6 +40,7 @@ public class MenuDAO {
                 String delivery_fee = rs.getString("delivery_fee");
                 String n_price = rs.getString("n_price");
                 String s_price = rs.getString("s_price");
+                s_price = s_price.replace("원","");
                 List<String> prices = new ArrayList<>();
                 if (n_price != null) prices.add(n_price);
                 if (s_price != null) prices.add(s_price);
@@ -67,6 +68,7 @@ public class MenuDAO {
                 String description = rs.getString("description");
                 String nPrice = rs.getString("n_price");
                 String sPrice = rs.getString("s_price");
+                sPrice = sPrice.replace("원","");
                 List<String> badges = jdbcTemplate.queryForList(sqlForBadge, new Object[]{id}, String.class);
                 return new MainResponseDto(id, image, alt, deliveryTypes, title, description, nPrice, sPrice, badges);
             }
@@ -89,6 +91,7 @@ public class MenuDAO {
                 String description = rs.getString("description");
                 String nPrice = rs.getString("n_price");
                 String sPrice = rs.getString("s_price");
+                sPrice = sPrice.replace("원","");
                 List<String> badges = jdbcTemplate.queryForList(sqlForBadge, new Object[]{id}, String.class);
                 return new MainResponseDto(id, image, alt, deliveryTypes, title, description, nPrice, sPrice, badges);
             }

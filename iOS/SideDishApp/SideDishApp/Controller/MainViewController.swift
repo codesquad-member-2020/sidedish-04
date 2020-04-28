@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class MainViewController: UIViewController {
     
@@ -33,6 +34,7 @@ class MainViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataSource), name: .changeDataSourceValue, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .touchSectionHeader, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,8 +54,15 @@ class MainViewController: UIViewController {
         let row = notificationInfo["reloadSection"]!
         
         dataSource.sideDish[row] = dataManager.allDishes[row]
-        //self.mainTableView.reloadData()
         self.mainTableView.reloadSections(IndexSet(integersIn: row...row), with: .automatic)
+    }
+    
+    @objc private func showToast(notification: Notification) {
+        guard let sectionIndex = notification.userInfo?["sectionIndex"] as? Int else { return }
+        guard let sectionTitle = notification.userInfo?["sectionTitle"] as? String else { return }
+        
+        let productCount = dataManager.allDishes[sectionIndex]?.count
+        Toast(text: "\(sectionTitle)상품은 \(productCount ?? 0)개가 있습니다.").show()
     }
 }
 

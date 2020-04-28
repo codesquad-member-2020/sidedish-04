@@ -3,5 +3,5 @@
 
 target 'SideDishApp' do
   use_frameworks!
-  pod 'Alamofire'
+  pod 'Toaster'
 end

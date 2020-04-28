@@ -3,6 +3,8 @@ import styled from "styled-components";
 import ProductImages from "./ProductImages";
 import { Layout } from "../Global";
 import ProductInfo from "./ProductInfo";
+import CloseButton from "./CloseButton";
+import Carousel from "./Carousel";
 import { DETAIL_URL } from "../../constant/url";
 
 class DetailPage extends Component {
@@ -25,6 +27,7 @@ class DetailPage extends Component {
         deliveryFee: data.delivery_fee,
         prices: data.prices,
       },
+      productDetail: data.detail_section,
     });
   };
 
@@ -49,28 +52,25 @@ class DetailPage extends Component {
   }
 
   render() {
-    const { productImages, productInfo } = this.state;
-    const { detailPageTitle } = this.props;
+    const { productImages, productInfo, productDetail } = this.state;
+    const { detailPageTitle, removeDetailPage } = this.props;
 
-    console.log(detailPageTitle);
+    console.log(removeDetailPage);
+
     return (
       <this.detailPageWrap>
         <this.productContainer>
           <ProductImages images={productImages} />
           <ProductInfo info={productInfo} title={detailPageTitle} />
         </this.productContainer>
-        {/* <Carousel
-          sidedishes={sidedishes}
-          setDetailPageId={this.setDetailPageId}
-        />
-        <CloseButton/> */}
+        <Carousel sidedishes={productDetail} />
+        <CloseButton removeDetailPage={removeDetailPage} />
       </this.detailPageWrap>
     );
   }
 
   productContainer = styled.div`
-    /* display: flex; */
-    ${Layout};
+    ${Layout}
   `;
 
   detailPageWrap = styled.div`
@@ -79,7 +79,7 @@ class DetailPage extends Component {
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 0 30px;
+    padding: 30px;
 
     background-color: #fff;
   `;

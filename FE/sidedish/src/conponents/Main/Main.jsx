@@ -74,7 +74,7 @@ class Main extends Component {
     console.log(this.state);
   };
 
-  removeDetailPageId = () => {
+  removeDetailPage = () => {
     this.setState({ detailPageId: null });
   };
 

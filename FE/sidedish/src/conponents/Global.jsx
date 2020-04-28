@@ -14,4 +14,10 @@ const FlexCenter = css`
   justify-content: center;
 `;
 
-export { Layout, FlexCenter };
+const FlexSpaceBetween = css`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export { Layout, FlexCenter, FlexSpaceBetween };

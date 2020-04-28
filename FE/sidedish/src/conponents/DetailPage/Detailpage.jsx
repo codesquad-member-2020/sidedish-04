@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import ProductImages from "./ProductImages";
+import ProductInfo from "./ProductInfo";
 import { DETAIL_URL } from "../../constant/url";
 
 class DetailPage extends Component {
   state = {
     isClick: false,
     productImages: {},
+    title: "",
   };
 
   saveData = (data) => {
@@ -14,6 +16,13 @@ class DetailPage extends Component {
       productImages: {
         mainImage: data.top_image,
         subImages: data.thumb_images,
+      },
+      productInfo: {
+        desc: data.product_description,
+        point: data.point,
+        deliveryInfo: data.delivery_info,
+        deliveryFee: data.delivery_fee,
+        prices: data.prices,
       },
     });
   };
@@ -29,19 +38,26 @@ class DetailPage extends Component {
       });
   };
 
+  //   getTitle = () => {
+  //     if (!this.props.detailPageTitle) return;
+  //     this.setState({ title: this.props.detailPageTitle });
+  //   };
+
   componentDidMount() {
     this.getDetailPage();
   }
 
   render() {
-    const { productImages } = this.state;
+    const { productImages, productInfo } = this.state;
+    const { detailPageTitle } = this.props;
+
+    console.log(detailPageTitle);
     return (
       <this.detailPageWrap>
-        <div>
+        <this.productContainer>
           <ProductImages images={productImages} />
-
-          {/* <productInfo/>  */}
-        </div>
+          <ProductInfo info={productInfo} title={detailPageTitle} />
+        </this.productContainer>
         {/* <Carousel
           sidedishes={sidedishes}
           setDetailPageId={this.setDetailPageId}
@@ -51,17 +67,16 @@ class DetailPage extends Component {
     );
   }
 
+  productContainer = styled.div`
+    display: flex;
+  `;
+
   detailPageWrap = styled.div`
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* div::-webkit-scrollbar {
-      display: none;
-    } */
-
-    /* margin: -50% 0 0 -50%; */
 
     background-color: #fff;
   `;

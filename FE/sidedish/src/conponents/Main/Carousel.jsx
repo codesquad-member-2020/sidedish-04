@@ -8,7 +8,7 @@ import theme from "../theme";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Carousel({ sidedishes, setDetailPageId }) {
+function Carousel({ sidedishes, setDetailPageId, setDetailPageTitle }) {
   const ArrowLeft = styled.button`
     ::before {
       content: "◀";
@@ -215,7 +215,13 @@ function Carousel({ sidedishes, setDetailPageId }) {
 
             return (
               <Item key={detail_hash}>
-                <DetailPageButton onClick={() => setDetailPageId(detail_hash)}>
+                <DetailPageButton
+                  onClick={() => {
+                    setDetailPageId(detail_hash);
+                    setDetailPageTitle(title);
+                    console.log(title, setDetailPageTitle);
+                  }}
+                >
                   <ImgArea>
                     <Img src={image} alt={alt} />
                     <ImgShadow>

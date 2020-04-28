@@ -18,7 +18,8 @@ class Main extends Component {
     maindishes: [],
     sidedishes: [],
     moreSidedishes: [],
-    detailPageId: null,
+    detailPageId: "",
+    detailPageTitle: "",
   };
 
   getMaindishes = () => {
@@ -52,20 +53,25 @@ class Main extends Component {
   }
 
   showDetailPage = () => {
-    const { detailPageId } = this.state;
+    const { detailPageId, detailPageTitle } = this.state;
     if (detailPageId) {
       return (
         <DetailPage
           removeDetailPage={this.removeDetailPage}
           detailPageId={detailPageId}
+          detailPageTitle={detailPageTitle}
         />
       );
     }
   };
 
   setDetailPageId = (id) => {
-    console.log(id);
     this.setState({ detailPageId: id });
+  };
+
+  setDetailPageTitle = (title) => {
+    this.setState({ detailPageTitle: title });
+    console.log(this.state);
   };
 
   removeDetailPageId = () => {
@@ -82,15 +88,18 @@ class Main extends Component {
         <Carousel
           sidedishes={maindishes}
           setDetailPageId={this.setDetailPageId}
+          setDetailPageTitle={this.setDetailPageTitle}
         />
         <Title title={side.title} desc={side.desc} />
         <Carousel
           sidedishes={sidedishes}
           setDetailPageId={this.setDetailPageId}
+          setDetailPageTitle={this.setDetailPageTitle}
         />
         <MoreButton
           moreSidedishes={moreSidedishes}
           setDetailPageId={this.setDetailPageId}
+          setDetailPageTitle={this.setDetailPageTitle}
         />
         {this.showDetailPage()}
       </MainWrap>

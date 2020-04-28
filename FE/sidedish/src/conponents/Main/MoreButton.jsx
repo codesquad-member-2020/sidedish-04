@@ -36,6 +36,7 @@ class MoreButton extends Component {
           <Carousel
             sidedishes={moreSidedishes}
             setDetailPageId={this.props.setDetailPageId}
+            setDetailPageTitle={this.props.setDetailPageTitle}
           />
         </>
       );

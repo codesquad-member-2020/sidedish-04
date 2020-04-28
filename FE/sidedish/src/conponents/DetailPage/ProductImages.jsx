@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { FlexCenter } from "../Global";
 
 const Wrap = styled.div`
-  width: 25%;
+  width: 30%;
 `;
 
 const MainImgWrap = styled.div`
@@ -35,7 +34,7 @@ function ProductImages({ images: { mainImage, subImages } }) {
     const subImagesList = currentSubImages.map((subImage, index) => {
       return (
         <Item key={index}>
-          <img src={subImage} alt="" />
+          <img src={subImage} />
         </Item>
       );
     });
@@ -45,7 +44,7 @@ function ProductImages({ images: { mainImage, subImages } }) {
   return (
     <Wrap>
       <MainImgWrap>
-        <img src={mainImage} alt="" />
+        <img src={mainImage} />
       </MainImgWrap>
       <ItemList>{getSubImages(subImages)}</ItemList>
     </Wrap>

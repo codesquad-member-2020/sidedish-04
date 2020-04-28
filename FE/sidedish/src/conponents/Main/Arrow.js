@@ -5,8 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 const Arrow = (props) => {
   const Arrow = styled.img`
     width: 30px;
-    color: #ff7c7c;
-    /* margin: 15px; */
+
+    margin: 15px;
   `;
   let className = props.type === "next" ? "nextArrow" : "prevArrow";
   const ArrowBtn =

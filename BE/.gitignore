@@ -120,7 +120,6 @@ fabric.properties
 
 # Package Files #
 *.jar
-*.war
 *.nar
 *.ear
 *.zip
@@ -175,7 +174,6 @@ Temporary Items
 
 ### Gradle ###
 .gradle
-build/
 
 # Ignore Gradle GUI config
 gradle-app.setting

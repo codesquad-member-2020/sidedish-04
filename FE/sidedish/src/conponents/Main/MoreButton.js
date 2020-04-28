@@ -30,24 +30,24 @@ class MoreButton extends Component {
     const { moreSidedishes } = this.props;
     let _content = null;
     if (isClick) {
-      return (
+      _content = (
         <>
           <Title title={soup.title} desc={soup.desc} />
           <Carousel sidedishes={moreSidedishes} />
         </>
       );
     } else {
-      return (
+      _content = (
         <MoreBtn onClick={this.clickMoreBtn}>
           <span>반찬 전체보기 ></span>
         </MoreBtn>
       );
     }
-    // return _content;
+    return _content;
   };
 
   render() {
-    return <>{this.showMoreSidedish}</>;
+    return <>{this.showMoreSidedish()}</>;
   }
 }
 

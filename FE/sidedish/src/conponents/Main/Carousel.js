@@ -145,6 +145,7 @@ function Carousel({ sidedishes }) {
       background-color: ${(props) => {
         const spanProps = props.children[0];
         const event = spanProps.props.children;
+
         if (event === "이벤트특가") {
           return props.theme.eventColor;
         } else {
@@ -158,8 +159,9 @@ function Carousel({ sidedishes }) {
   `;
 
   const priceRender = (n_price, s_price, badges) => {
+    let _price = null;
     if (n_price) {
-      return (
+      _price = (
         <>
           <Price>
             <SellingPrice>
@@ -176,7 +178,7 @@ function Carousel({ sidedishes }) {
         </>
       );
     } else {
-      return (
+      _price = (
         <Price>
           <SellingPrice>
             {s_price}
@@ -185,6 +187,8 @@ function Carousel({ sidedishes }) {
         </Price>
       );
     }
+
+    return _price;
   };
 
   console.log(sidedishes);

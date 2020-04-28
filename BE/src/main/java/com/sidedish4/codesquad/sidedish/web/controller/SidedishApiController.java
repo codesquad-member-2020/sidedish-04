@@ -1,16 +1,18 @@
 package com.sidedish4.codesquad.sidedish.web.controller;
 
-import com.sidedish4.codesquad.sidedish.domain.Item;
-import com.sidedish4.codesquad.sidedish.service.AuthorizationService;
 import com.sidedish4.codesquad.sidedish.service.SideDishService;
-import com.sidedish4.codesquad.sidedish.web.dto.*;
+import com.sidedish4.codesquad.sidedish.web.dto.AllItemResponseDto;
+import com.sidedish4.codesquad.sidedish.web.dto.DetailDto;
+import com.sidedish4.codesquad.sidedish.web.dto.DetailResponseDto;
+import com.sidedish4.codesquad.sidedish.web.dto.ItemResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,11 +22,8 @@ import java.util.List;
 public class SidedishApiController {
 
     private final SideDishService sideDishService;
-    private final AuthorizationService authorizationService;
 
     private Logger logger = LoggerFactory.getLogger(SidedishApiController.class);
-
-    private final RestTemplate restTemplate;
 
     @GetMapping("init")
     public String main() {
@@ -42,51 +41,28 @@ public class SidedishApiController {
         }
         menuName = "밑반찬";
         menu = "side";
-        List<String> sideHashes = Arrays.asList("HBBCC", "H1939", "H8EA5", "H602F", "H9F0B", "H0FC6", "HCCFE", "HB9C1");
+        List<String> sideHashes = Arrays.asList("HBBCC", "H1939", "H8EA5", "H602F", "H9F0B", "H0FC6", "HCCFE");
         for (String each : sideHashes) {
             sideDishService.saveItem(menu, each, menuName);
         }
         return "success";
     }
 
-    @GetMapping("reverseProxy")
-    public String reverseProxy() {
-        return "reverseProxy";
-    }
-
     @GetMapping("/{menuName}")
-    public ResponseEntity<AllMainResponseDto> menuItems(@PathVariable("menuName") String menuName) {
-        List<MainResponseDto> result = sideDishService.returnMenuItems(menuName);
-        return new ResponseEntity<>(new AllMainResponseDto("Ok", result), HttpStatus.OK);
+    public ResponseEntity<AllItemResponseDto> menuItems(@PathVariable("menuName") String menuName) {
+        List<ItemResponseDto> result = sideDishService.returnMenuItems(menuName);
+        return new ResponseEntity<>(new AllItemResponseDto("Ok", result), HttpStatus.OK);
     }
 
     @GetMapping("/{menuName}/{id}")
-    public ResponseEntity<MainResponseDto> menuItem(@PathVariable("id") Long id,@PathVariable("menuName") String menuName) {
-        MainResponseDto result = sideDishService.returnMenuItem(id,menuName);
+    public ResponseEntity<ItemResponseDto> menuItem(@PathVariable("id") Long id, @PathVariable("menuName") String menuName) {
+        ItemResponseDto result = sideDishService.returnMenuItem(id,menuName);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("/detail/{detailHash}")
-    public ResponseEntity<EachDetailResponseDto> detailItem(@PathVariable("detailHash") Long deailHash) {
-        DetailResponseDto result = sideDishService.returnDeatailItem(deailHash);
-        return new ResponseEntity<>(new EachDetailResponseDto(deailHash.toString(), result), HttpStatus.OK);
-    }
-
-    @GetMapping("/github/callback")
-    public ResponseEntity<AuthorizationResponseDto> authorize(@RequestParam("code") String code) {
-        logger.info("code: {}", code);
-        String url = "https://github.com/login/oauth/access_token";
-        String client_id = "bc4a9e51a6494c1d0626";
-        String client_secret = "18630d9ac18c119ed867f196c97a2c25d369f382";
-        String redirect_url = "http://localhost:8080/github/callback";
-        AccessTokenRequestDto accessTokenRequestDto =
-                authorizationService.getAccessToken(client_id, client_secret, code, redirect_url);
-        try {
-            String accessToken = restTemplate.postForObject(url, accessTokenRequestDto, String.class);
-            logger.info("accessToken : {}", accessToken);
-            return new ResponseEntity<>(new AuthorizationResponseDto("200"), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(new AuthorizationResponseDto("401"), HttpStatus.UNAUTHORIZED);
-        }
+    public ResponseEntity<DetailResponseDto> detailItem(@PathVariable("detailHash") Long deailHash) {
+        DetailDto result = sideDishService.returnDeatailItem(deailHash);
+        return new ResponseEntity<>(new DetailResponseDto(deailHash.toString(), result), HttpStatus.OK);
     }
 }

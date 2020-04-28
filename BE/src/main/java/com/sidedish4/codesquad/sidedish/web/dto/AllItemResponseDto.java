@@ -10,12 +10,12 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @ToString
-public class AllMainResponseDto {
+public class AllItemResponseDto {
     private String statusCode;
-    private List<MainResponseDto> body;
+    private List<ItemResponseDto> body;
 
     @Builder
-    public AllMainResponseDto(String statusCode, List<MainResponseDto> body) {
+    public AllItemResponseDto(String statusCode, List<ItemResponseDto> body) {
         this.statusCode = statusCode;
         this.body = body;
     }

@@ -1,7 +1,7 @@
 package com.sidedish4.codesquad.sidedish.domain;
 
-import com.sidedish4.codesquad.sidedish.web.dto.DetailResponseDto;
-import com.sidedish4.codesquad.sidedish.web.dto.MainResponseDto;
+import com.sidedish4.codesquad.sidedish.web.dto.DetailDto;
+import com.sidedish4.codesquad.sidedish.web.dto.ItemResponseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,13 @@ public class MenuDAO {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public DetailResponseDto findDetailByItemId(Long id) {
+    public DetailDto findDetailByItemId(Long id) {
         String sql = "select * from item where id = ?";
         String sqlForThumbImage = "select url from thumb_image where item = ?";
         String sqlForDetailSection = "select url from detail_section where item = ?";
-        RowMapper<DetailResponseDto> detailMapper = new RowMapper<DetailResponseDto>() {
+        RowMapper<DetailDto> detailMapper = new RowMapper<DetailDto>() {
             @Override
-            public DetailResponseDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+            public DetailDto mapRow(ResultSet rs, int rowNum) throws SQLException {
                 String top_image = rs.getString("top_image");
                 String description = rs.getString("description");
                 String point = rs.getString("point");
@@ -46,20 +46,20 @@ public class MenuDAO {
                 if (s_price != null) prices.add(s_price);
                 List<String> thumImages = jdbcTemplate.queryForList(sqlForThumbImage, new Object[]{id}, String.class);
                 List<String> detailSections = jdbcTemplate.queryForList(sqlForDetailSection, new Object[]{id}, String.class);
-                DetailResponseDto detailResponseDto = new DetailResponseDto(top_image, description, point, delivery_info, delivery_fee, thumImages, prices, detailSections);
-                return detailResponseDto;
+                DetailDto detailDto = new DetailDto(top_image, description, point, delivery_info, delivery_fee, thumImages, prices, detailSections);
+                return detailDto;
             }
         };
         return jdbcTemplate.queryForObject(sql, new Object[]{id}, detailMapper);
     }
 
-    public List<MainResponseDto> findMenuItemsByMenuId(Long menuId) {
+    public List<ItemResponseDto> findMenuItemsByMenuId(Long menuId) {
         String sql = "select * from item where item.menu = ?";
         String sqlForDeliveryType = "select type from delivery where delivery.item = ?";
         String sqlForBadge = "select name from badge where badge.item = ?";
-        List<MainResponseDto> itemsMapper = jdbcTemplate.query(sql,new Object[]{menuId}, new RowMapper<MainResponseDto>() {
+        List<ItemResponseDto> itemsMapper = jdbcTemplate.query(sql,new Object[]{menuId}, new RowMapper<ItemResponseDto>() {
             @Override
-            public MainResponseDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+            public ItemResponseDto mapRow(ResultSet rs, int rowNum) throws SQLException {
                 String id = rs.getString("id");
                 String image = rs.getString("image");
                 String alt = rs.getString("alt");
@@ -70,19 +70,19 @@ public class MenuDAO {
                 String sPrice = rs.getString("s_price");
                 sPrice = sPrice.replace("원","");
                 List<String> badges = jdbcTemplate.queryForList(sqlForBadge, new Object[]{id}, String.class);
-                return new MainResponseDto(id, image, alt, deliveryTypes, title, description, nPrice, sPrice, badges);
+                return new ItemResponseDto(id, image, alt, deliveryTypes, title, description, nPrice, sPrice, badges);
             }
         });
         return itemsMapper;
     }
 
-    public MainResponseDto findItemByItemId(Long id) {
+    public ItemResponseDto findItemByItemId(Long id) {
         String sql = "select * from item where id = ?";
         String sqlForDeliveryType = "select type from delivery where id = ?";
         String sqlForBadge = "select name from badge where id = ?";
-        RowMapper<MainResponseDto> itemMapper = new RowMapper<MainResponseDto>() {
+        RowMapper<ItemResponseDto> itemMapper = new RowMapper<ItemResponseDto>() {
             @Override
-            public MainResponseDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+            public ItemResponseDto mapRow(ResultSet rs, int rowNum) throws SQLException {
                 String id = rs.getString("id");
                 String image = rs.getString("image");
                 String alt = rs.getString("alt");
@@ -93,7 +93,7 @@ public class MenuDAO {
                 String sPrice = rs.getString("s_price");
                 sPrice = sPrice.replace("원","");
                 List<String> badges = jdbcTemplate.queryForList(sqlForBadge, new Object[]{id}, String.class);
-                return new MainResponseDto(id, image, alt, deliveryTypes, title, description, nPrice, sPrice, badges);
+                return new ItemResponseDto(id, image, alt, deliveryTypes, title, description, nPrice, sPrice, badges);
             }
         };
         return jdbcTemplate.queryForObject(sql, new Object[]{id}, itemMapper);

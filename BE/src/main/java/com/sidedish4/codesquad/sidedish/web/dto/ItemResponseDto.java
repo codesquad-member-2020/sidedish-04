@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @ToString
-public class MainResponseDto {
+public class ItemResponseDto {
 
     private String detail_hash;
     private String image;
@@ -23,7 +23,7 @@ public class MainResponseDto {
     private List<String> badge;
 
     @Builder
-    public MainResponseDto(String detail_hash, String image, String alt, List<String> delivery_type, String title,
+    public ItemResponseDto(String detail_hash, String image, String alt, List<String> delivery_type, String title,
                            String description, String n_price, String s_price, List<String> badge) {
         this.detail_hash = detail_hash;
         this.image = image;

@@ -1,11 +1,17 @@
-import styled ,{css}from "styled-components";
+import styled, { css } from "styled-components";
 
 const Layout = css`
-     display:flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    width: 960px;
-`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 960px;
+`;
 
-export default Layout
+const FlexCenter = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export { Layout, FlexCenter };

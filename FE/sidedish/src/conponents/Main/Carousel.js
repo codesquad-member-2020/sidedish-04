@@ -135,27 +135,27 @@ function Carousel({ sidedishes }) {
     margin-bottom: 13px;
   `;
 
-  const EventBadge = styled.div`
+  const EventBadgeBox = styled.div`
     width: 100%;
     height: 30px;
     text-align: center;
     margin: 5px;
-    span {
-      padding: 5px;
-      background-color: ${(props) => {
-        const spanProps = props.children[0];
-        const event = spanProps.props.children;
+  `;
 
-        if (event === "이벤트특가") {
-          return props.theme.eventColor;
-        } else {
-          return props.theme.launchingColor;
-        }
-      }};
-      font-size: 11px;
-      font-weight: bold;
-      color: #fff;
-    }
+  const EventBadge = styled.span`
+    padding: 5px;
+    margin: 5px;
+    background-color: ${(props) => {
+      const event = props.children;
+      if (event === "이벤트특가") {
+        return props.theme.eventColor;
+      } else {
+        return props.theme.launchingColor;
+      }
+    }};
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
   `;
 
   const priceRender = (n_price, s_price, badges) => {
@@ -170,11 +170,11 @@ function Carousel({ sidedishes }) {
             </SellingPrice>
             <OriginPrice>{s_price}</OriginPrice>
           </Price>
-          <EventBadge>
-            {badges.map((badge) => {
-              return <span>{badge}</span>;
-            })}
-          </EventBadge>
+          <EventBadgeBox>
+            {badges.map((badge) => (
+              <EventBadge>{badge}</EventBadge>
+            ))}
+          </EventBadgeBox>
         </>
       );
     } else {
@@ -191,7 +191,6 @@ function Carousel({ sidedishes }) {
     return _price;
   };
 
-  console.log(sidedishes);
   return (
     <ThemeProvider theme={theme}>
       <SliderWrap>

@@ -1,11 +1,9 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
+// import Arrow from "./Arrow";
 import Slider from "react-slick";
 import { FlexCenter } from "../Global";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import theme from "../theme";
-import "./Carousel.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,8 +11,8 @@ import "slick-carousel/slick/slick-theme.css";
 function Carousel({ sidedishes }) {
   const ArrowLeft = styled.button`
     ::before {
-      content: "◀" !important;
-      color: #ff7c7c !important;
+      content: "◀";
+      color: #ff7c7c;
       font-size: 38px;
       position: relative;
       left: -15px;
@@ -22,8 +20,8 @@ function Carousel({ sidedishes }) {
   `;
   const ArrowRight = styled.button`
     ::before {
-      content: "▶" !important;
-      color: #ff7c7c !important;
+      content: "▶";
+      color: #ff7c7c;
       font-size: 38px;
     }
   `;
@@ -36,6 +34,8 @@ function Carousel({ sidedishes }) {
     arrows: true,
     prevArrow: <ArrowLeft />,
     nextArrow: <ArrowRight />,
+    // nextArrow: <Arrow type="next" />,
+    // prevArrow: <Arrow type="prev" />,
   };
 
   const SliderWrap = styled.div`
@@ -63,7 +63,6 @@ function Carousel({ sidedishes }) {
     span {
       padding: 8px 0;
       color: #fff;
-      border-bottom: 1px solid white;
     }
   `;
 
@@ -177,12 +176,14 @@ function Carousel({ sidedishes }) {
     }
   };
 
+  console.log(sidedishes);
   return (
     <ThemeProvider theme={theme}>
       <SliderWrap>
         <Slider {...setting}>
           {sidedishes.map((sidedish) => {
             const {
+              detail_hash,
               image,
               alt,
               title,
@@ -193,12 +194,12 @@ function Carousel({ sidedishes }) {
             } = sidedish;
 
             return (
-              <Itme>
+              <Itme key={detail_hash}>
                 <ImgArea>
                   <Img src={image} alt={alt} />
                   <ImgShadow>
-                    {delivery_type.map((deliveryType) => (
-                      <span>{deliveryType}</span>
+                    {delivery_type.map((deliveryType, index) => (
+                      <span key={index}>{deliveryType}</span>
                     ))}
                   </ImgShadow>
                 </ImgArea>

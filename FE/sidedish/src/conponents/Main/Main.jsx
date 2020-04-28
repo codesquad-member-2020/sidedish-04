@@ -53,7 +53,6 @@ class Main extends Component {
 
   showDetailPage = () => {
     const { detailPageId } = this.state;
-    console.log(detailPageId);
     if (detailPageId) {
       return (
         <DetailPage

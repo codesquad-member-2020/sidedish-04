@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import ProductImages from "./ProductImages";
 import { DETAIL_URL } from "../../constant/url";
-
-const DetailPageButton = styled.button`
-  width: inherit;
-  min-height: inherit;
-  text-align: center;
-  cursor: pointer;
-`;
 
 class DetailPage extends Component {
   state = {
     isClick: false,
-    detailPage: null,
+    productImages: {},
+  };
+
+  saveData = (data) => {
+    this.setState({
+      productImages: {
+        mainImage: data.top_image,
+        subImages: data.thumb_images,
+      },
+    });
   };
 
   getDetailPage = () => {
@@ -21,8 +24,8 @@ class DetailPage extends Component {
     fetch(detailUrl)
       .then((res) => res.json())
       .then((detailPage) => {
-        this.setState({ detailPage: detailPage.data });
-        console.log(this.state.detailPage);
+        this.saveData(detailPage.data);
+        // this.setState({ detailPage: detailPage.data });
       });
   };
 
@@ -31,10 +34,12 @@ class DetailPage extends Component {
   }
 
   render() {
+    const { productImages } = this.state;
     return (
-      <div>
+      <this.detailPageWrap>
         <div>
-          {/* <productImages /> */}
+          <ProductImages images={productImages} />
+
           {/* <productInfo/>  */}
         </div>
         {/* <Carousel
@@ -42,9 +47,24 @@ class DetailPage extends Component {
           setDetailPageId={this.setDetailPageId}
         />
         <CloseButton/> */}
-      </div>
+      </this.detailPageWrap>
     );
   }
+
+  detailPageWrap = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* div::-webkit-scrollbar {
+      display: none;
+    } */
+
+    /* margin: -50% 0 0 -50%; */
+
+    background-color: #fff;
+  `;
 }
 
 export default DetailPage;

@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrap = styled.div`
-  width: 30%;
+  width: 40%;
+  height: 315px;
 `;
 
 const MainImgWrap = styled.div`
+  background-size: contain;
   margin: 5px;
   width: 100%;
+  height: 100%;
+
   img {
     width: 100%;
     height: 100%;
@@ -22,6 +26,7 @@ const ItemList = styled.ul`
 
 const Item = styled.li`
   width: 23%;
+  height: 70px;
   img {
     width: 100%;
     height: 100%;

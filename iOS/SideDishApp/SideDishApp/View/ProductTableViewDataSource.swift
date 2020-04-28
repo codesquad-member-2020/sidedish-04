@@ -45,6 +45,10 @@ class ProductTableViewDataSource: NSObject, UITableViewDataSource {
         
         DataManger().fetchImage(url: currentSideDish!.image, completion: { (image, error) in
             cell.productImage.image = image ?? UIImage()
+            cell.productImage.layer.cornerRadius = cell.productImage.frame.height/2
+            cell.productImage.layer.borderWidth = 1
+            cell.productImage.layer.borderColor = UIColor.clear.cgColor
+            cell.productImage.clipsToBounds = true
         })
         
         cell.productTitle.text = currentSideDish?.title

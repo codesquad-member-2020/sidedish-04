@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import ProductImages from "./ProductImages";
+import { Layout } from "../Global";
 import ProductInfo from "./ProductInfo";
 import { DETAIL_URL } from "../../constant/url";
 
@@ -68,7 +69,8 @@ class DetailPage extends Component {
   }
 
   productContainer = styled.div`
-    display: flex;
+    /* display: flex; */
+    ${Layout};
   `;
 
   detailPageWrap = styled.div`
@@ -77,6 +79,7 @@ class DetailPage extends Component {
     left: 0;
     width: 100%;
     height: 100%;
+    padding: 0 30px;
 
     background-color: #fff;
   `;

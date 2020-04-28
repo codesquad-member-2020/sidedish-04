@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrap = styled.div`
-  width: 40%;
-  height: 315px;
+  width: 51%;
 `;
 
 const MainImgWrap = styled.div`

@@ -17,44 +17,37 @@ const MoreBtn = styled.button`
 
 class MoreButton extends Component {
   state = {
-    moreSidedishes: [],
     isClick: false,
   };
 
-  // getMoreSidedishes = () => {
-  //   fetch(SOUP_URL)
-  //     .then((res) => res.json())
-  //     .then((soup) => {
-  //       this.setState({ moreSidedishes: moreSidedishes.body });
-  //     });
-  // };
-
-  showMoreSidedishes = () => {
+  clickMoreBtn = () => {
     this.setState({ isClick: true });
   };
 
-  render() {
+  showMoreSidedish = () => {
     const { soup } = title;
     const { isClick } = this.state;
-    const moreSidedishes = this.props.moreSidedishes;
-    console.log(moreSidedishes);
+    const { moreSidedishes } = this.props;
     let _content = null;
     if (isClick) {
-      _content = (
+      return (
         <>
           <Title title={soup.title} desc={soup.desc} />
           <Carousel sidedishes={moreSidedishes} />
         </>
       );
-      console.log();
     } else {
-      _content = (
-        <MoreBtn onClick={this.showMoreSidedishes}>
+      return (
+        <MoreBtn onClick={this.clickMoreBtn}>
           <span>반찬 전체보기 ></span>
         </MoreBtn>
       );
     }
-    return <>{_content}</>;
+    // return _content;
+  };
+
+  render() {
+    return <>{this.showMoreSidedish}</>;
   }
 }
 

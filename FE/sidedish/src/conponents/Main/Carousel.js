@@ -12,7 +12,7 @@ function Carousel({ sidedishes }) {
   const ArrowLeft = styled.button`
     ::before {
       content: "◀";
-      color: #ff7c7c;
+      color: #ffb6b9;
       font-size: 38px;
       position: relative;
       left: -15px;
@@ -21,7 +21,7 @@ function Carousel({ sidedishes }) {
   const ArrowRight = styled.button`
     ::before {
       content: "▶";
-      color: #ff7c7c;
+      color: #ffb6b9;
       font-size: 38px;
     }
   `;
@@ -142,26 +142,36 @@ function Carousel({ sidedishes }) {
     margin: 5px;
     span {
       padding: 5px;
-      background-color: #fe346e;
+      background-color: ${(props) => {
+        const spanProps = props.children[0];
+        const event = spanProps.props.children;
+        if (event === "이벤트특가") {
+          return props.theme.eventColor;
+        } else {
+          return props.theme.launchingColor;
+        }
+      }};
       font-size: 11px;
       font-weight: bold;
       color: #fff;
     }
   `;
 
-  const priceRender = (n_price, s_price) => {
-    if (n_price !== null) {
+  const priceRender = (n_price, s_price, badges) => {
+    if (n_price) {
       return (
         <>
           <Price>
             <SellingPrice>
               {n_price}
-              <span> 원</span>
+              <span>원</span>
             </SellingPrice>
             <OriginPrice>{s_price}</OriginPrice>
           </Price>
           <EventBadge>
-            <span>이벤트특가</span>
+            {badges.map((badge) => {
+              return <span>{badge}</span>;
+            })}
           </EventBadge>
         </>
       );
@@ -169,7 +179,8 @@ function Carousel({ sidedishes }) {
       return (
         <Price>
           <SellingPrice>
-            {s_price} <span> 원</span>
+            {s_price}
+            <span>원</span>
           </SellingPrice>
         </Price>
       );
@@ -191,6 +202,7 @@ function Carousel({ sidedishes }) {
               n_price,
               s_price,
               delivery_type,
+              badge,
             } = sidedish;
 
             return (
@@ -206,7 +218,7 @@ function Carousel({ sidedishes }) {
                 <ItemContent>
                   <ItemTitle>{title}</ItemTitle>
                   <ItemDesc>{description}</ItemDesc>
-                  {priceRender(n_price, s_price)}
+                  {priceRender(n_price, s_price, badge)}
                 </ItemContent>
               </Itme>
             );

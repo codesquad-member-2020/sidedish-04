@@ -1,3 +1,6 @@
-.s.prev{
-    color: aqua;
+.slick-prev:before {
+  /* content: "<" !important;
+  color: red !important; */
+}
+.slick-prev {
 }

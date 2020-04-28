@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Carousel from "./Carousel";
+import MoreButton from "./MoreButton";
 import { title } from "../../constant/title";
 import { MAIN_URL, SIDE_URL } from "../../constant/url";
 
 import Title from "./Title";
 
 const MainWrap = styled.main`
-  /* margin: 0 auto;
-    width: 960px; */
+  display: flex;
+  flex-direction: column;
 `;
 
 class Main extends Component {
@@ -47,6 +48,7 @@ class Main extends Component {
         <Carousel sidedishes={maindishes} />
         <Title title={side.title} desc={side.desc} />
         <Carousel sidedishes={sidedishes} />
+        {/* <MoreButton onClick={more()}/> */}
       </MainWrap>
     );
   }

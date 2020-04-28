@@ -2,6 +2,8 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import Slider from "react-slick";
 import { FlexCenter } from "../Global";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import theme from "../theme";
 import "./Carousel.css";
 
@@ -9,27 +11,23 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function Carousel({ sidedishes }) {
-  console.log(sidedishes);
   const ArrowLeft = styled.button`
-    /* width: 28px;
-    height: 52px; */
-    background-color: #666;
+    ::before {
+      content: "◀" !important;
+      color: #ff7c7c !important;
+      font-size: 38px;
+      position: relative;
+      left: -15px;
+    }
   `;
   const ArrowRight = styled.button`
-    /* width: 28px;
-    height: 52px; */
-    background-color: #666;
+    ::before {
+      content: "▶" !important;
+      color: #ff7c7c !important;
+      font-size: 38px;
+    }
   `;
-  //   const ArrowLeft = (props) => (
-  //     <button
-  //         {...props}
-  //         className={'s.prev'}/>
-  // );
-  // const ArrowRight = (props) => (
-  //     <button
-  //         {...props}
-  //         className={'s.next'}/>
-  // );
+
   const setting = {
     infinite: true,
     speed: 500,
@@ -42,7 +40,7 @@ function Carousel({ sidedishes }) {
 
   const SliderWrap = styled.div`
     width: 960px;
-    margin: 60px auto;
+    margin: 30px auto;
   `;
   const Itme = styled.div`
     width: 215px;
@@ -94,7 +92,6 @@ function Carousel({ sidedishes }) {
     overflow: hidden;
   `;
   const ItemTitle = styled.dt`
-    /* text-overflow:hidden; */
     margin-bottom: 5px;
     font-size: 16px;
     font-weight: bold;
@@ -153,7 +150,7 @@ function Carousel({ sidedishes }) {
     }
   `;
 
-  const selectButton = (n_price, s_price) => {
+  const priceRender = (n_price, s_price) => {
     if (n_price !== null) {
       return (
         <>
@@ -182,7 +179,6 @@ function Carousel({ sidedishes }) {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <CarouselWrap> */}
       <SliderWrap>
         <Slider {...setting}>
           {sidedishes.map((sidedish) => {
@@ -209,14 +205,13 @@ function Carousel({ sidedishes }) {
                 <ItemContent>
                   <ItemTitle>{title}</ItemTitle>
                   <ItemDesc>{description}</ItemDesc>
-                  {selectButton(n_price, s_price)}
+                  {priceRender(n_price, s_price)}
                 </ItemContent>
               </Itme>
             );
           })}
         </Slider>
       </SliderWrap>
-      {/* </CarouselWrap> */}
     </ThemeProvider>
   );
 }

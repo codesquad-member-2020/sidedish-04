@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @Getter
@@ -24,7 +25,7 @@ public class LoginApiController {
     private final RestTemplate restTemplate;
 
     @GetMapping("/github/callback")
-    public ResponseEntity<AuthorizationResponseDto> authorize(@RequestParam("code") String code) {
+    public RedirectView authorize(@RequestParam("code") String code) {
         logger.info("code: {}", code);
         String url = "https://github.com/login/oauth/access_token";
         String client_id = "bc4a9e51a6494c1d0626";
@@ -32,12 +33,14 @@ public class LoginApiController {
         String redirect_url = "http://15.164.33.98/api/sidedish/github/callback";
         AccessTokenRequestDto accessTokenRequestDto =
                 authorizationService.getAccessToken(client_id, client_secret, code, redirect_url);
+        String mainUrl = "http://15.164.33.98/";
+        String loginUrl = "http://15.164.33.98/login";
         try {
             String accessToken = restTemplate.postForObject(url, accessTokenRequestDto, String.class);
             logger.info("accessToken : {}", accessToken);
-            return new ResponseEntity<>(new AuthorizationResponseDto("200"), HttpStatus.OK);
+            return new RedirectView(mainUrl);
         } catch (Exception e) {
-            return new ResponseEntity<>(new AuthorizationResponseDto("401"), HttpStatus.UNAUTHORIZED);
+            return new RedirectView(loginUrl);
         }
     }
 }

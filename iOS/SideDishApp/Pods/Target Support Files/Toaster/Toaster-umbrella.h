@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "Toaster.h"
 
-FOUNDATION_EXPORT double AlamofireVersionNumber;
-FOUNDATION_EXPORT const unsigned char AlamofireVersionString[];
+FOUNDATION_EXPORT double ToasterVersionNumber;
+FOUNDATION_EXPORT const unsigned char ToasterVersionString[];
 

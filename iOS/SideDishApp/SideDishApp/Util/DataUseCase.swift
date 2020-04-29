@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 final class DataUseCase {
-    static let endpoint = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/"
+    static let endpoint = "http://15.164.33.98/api/sidedish/"
     static let detailRequest = ["main", "soup", "side"]
     
     public static func loadAllDishes(manager: NetworkManager, completion: @escaping ([DetailSideDishInfo]?, Int?, Error?) -> ()) {

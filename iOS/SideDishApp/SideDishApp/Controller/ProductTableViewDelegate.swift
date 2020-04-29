@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class ProductTableViewDelegate: NSObject, UITableViewDelegate {
     
@@ -26,9 +27,18 @@ class ProductTableViewDelegate: NSObject, UITableViewDelegate {
                 return nil
         }
         
+        let selectRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchSectionHeader))
+        headerView.addGestureRecognizer(selectRecognizer)
+        headerView.tag = section
+        
         headerView.sectionLabel.text = sectionLabel[section]
         headerView.sectionTitle.text = sectionTitle[section]
         
         return headerView
+    }
+    
+    @objc private func touchSectionHeader(_ sender: UIGestureRecognizer) {
+        guard let sectionNum = sender.view?.tag else { return }
+        NotificationCenter.default.post(name: .touchSectionHeader, object: nil, userInfo: ["sectionIndex":sectionNum, "sectionTitle":sectionTitle[sectionNum]])
     }
 }

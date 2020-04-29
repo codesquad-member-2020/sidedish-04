@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static let changeDataSourceValue = Notification.Name("changeDataSourceValue")
+    static let touchSectionHeader = Notification.Name("touchSectionHeader")
 }

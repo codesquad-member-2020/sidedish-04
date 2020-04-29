@@ -49,4 +49,27 @@ public class LoginApiController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
+
+    @GetMapping("/github/callback2")
+    public RedirectView authorize2(@RequestParam("code") String code,
+                                          HttpServletResponse response) {
+        logger.info("code: {}", code);
+        String url = "https://github.com/login/oauth/access_token";
+        String client_id = "82d852b27d3605f4123d";
+        String client_secret = "03f97b7f6d985ec412f15224680c381caaca594e";
+        String redirect_url = "http://15.164.33.98/api/sidedish2/github/callback2";
+        AccessTokenRequestDto accessTokenRequestDto =
+                authorizationService.getAccessToken(client_id, client_secret, code, redirect_url);
+        String mainUrl = "http://15.164.33.98/";
+        String loginUrl = "http://15.164.33.98/login";
+        try {
+            response.addHeader("login", "true");
+            String accessToken = restTemplate.postForObject(url, accessTokenRequestDto, String.class);
+            logger.info("accessToken : {}", accessToken);
+            return new RedirectView(mainUrl);
+        } catch (Exception e) {
+            response.addHeader("login", "false");
+            return new RedirectView(loginUrl);
+        }
+    }
 }

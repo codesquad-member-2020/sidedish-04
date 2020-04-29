@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import Toaster
 
 class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
@@ -38,6 +39,7 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         
         guard let response = navigationResponse.response as? HTTPURLResponse else { return }
         if (response.statusCode == 202) {
+            Toast(text: "로그인 성공").show()
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         decisionHandler(.allow)

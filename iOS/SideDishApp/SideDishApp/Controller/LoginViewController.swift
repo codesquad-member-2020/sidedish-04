@@ -41,10 +41,11 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         if (response.statusCode == 202) {
             Toast(text: "로그인 성공").show()
             self.presentingViewController?.dismiss(animated: true, completion: nil)
+            cleanAllCookies()
         }
         decisionHandler(.allow)
     }
-
+    
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         indicator.isHidden = false
         indicator.startAnimating()
@@ -62,5 +63,13 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         indicator.hidesWhenStopped = false
     }
     
+    func cleanAllCookies() {
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+                print("Cookie ::: \(record) deleted")
+            }
+        }
+    }
 }
 

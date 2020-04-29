@@ -4,38 +4,31 @@ import theme from "../conponents/theme";
 import { LOGIN_URL } from "../constant/url";
 
 const LoginWrap = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: ${(props) => props.theme.sellingColor};
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 13px;
+  right: 72px;
+  height: 30px;
+  cursor: pointer;
 `;
 
-const LoginButton = styled.button`
-  height: 200px;
+const LoginLink = styled.a`
   span {
-    color: #fff;
-    font-weight: bold;
-    font-size: 100px;
+    color: #777;
+    text-decoration: underline;
+    font-size: 18px;
   }
 `;
-
 function Login(props) {
   const fetchLogin = () => {
-    fetch(LOGIN_URL).then((res) => props.setLogin());
+    props.setLogin();
   };
 
   return (
     <ThemeProvider theme={theme}>
       <LoginWrap>
-        <LoginButton onClick={fetchLogin}>
-          <span>Hello! </span>
-          <span>Login👀</span>
-        </LoginButton>
+        <LoginLink href={LOGIN_URL} onClick={fetchLogin}>
+          <span>로그인</span>
+        </LoginLink>
       </LoginWrap>
       ;
     </ThemeProvider>

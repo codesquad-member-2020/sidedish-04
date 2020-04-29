@@ -20,20 +20,21 @@ class App extends Component {
   };
 
   render() {
-    const { isLogin } = this.state;
-    if (isLogin) {
-      return <Login setLogin={this.setLogin} />;
-    } else {
-      return (
-        <>
-          <Wrap>
-            <Header />
-            <Nav />
-            <Main />
-          </Wrap>
-        </>
-      );
-    }
+    // const { isLogin } = this.state;
+    // if (isLogin) {
+    //   return <Login setLogin={this.setLogin} />;
+    // } else {
+    return (
+      <>
+        <Wrap>
+          <Login />
+          <Header />
+          <Nav />
+          <Main />
+        </Wrap>
+      </>
+    );
+    // }
   }
 }
 

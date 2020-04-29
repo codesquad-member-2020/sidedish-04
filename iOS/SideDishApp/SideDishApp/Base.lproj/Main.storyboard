@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="BMDOHYEON_otf.otf">
+            <string>BMDoHyeon-OTF</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="Jxb-gz-QBf">
@@ -16,18 +21,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paperplane" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Kig-GB-eT1">
-                                <rect key="frame" x="37.666666666666657" y="95" width="300" height="299.33333333333337"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Baminchan" translatesAutoresizingMaskIntoConstraints="NO" id="Kig-GB-eT1">
+                                <rect key="frame" x="37.666666666666657" y="94" width="300" height="300"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Kig-GB-eT1" secondAttribute="height" multiplier="1:1" id="QnS-yI-Zp7"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AI-zz-vU6">
-                                <rect key="frame" x="113" y="444" width="149" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="로그인 버튼입니다.">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="126.66666666666669" y="444" width="122" height="36"/>
+                                <fontDescription key="fontDescription" name="BMDoHyeon-OTF" family="BM DoHyeon OTF" pointSize="20"/>
+                                <state key="normal" title="깃허브 로그인">
+                                    <color key="titleColor" red="1" green="0.99997597930000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="loginButton:" destination="PxZ-Nd-e7E" eventType="touchUpInside" id="PNF-uU-Sez"/>
@@ -235,8 +240,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Baminchan" width="380" height="381.33334350585938"/>
         <image name="flame" catalog="system" width="54" height="64"/>
-        <image name="paperplane" catalog="system" width="64" height="60"/>
         <namedColor name="BaeminColor">
             <color red="0.16470588235294117" green="0.75686274509803919" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

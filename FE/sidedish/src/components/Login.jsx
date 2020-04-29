@@ -23,9 +23,9 @@ function Login(props) {
 
   const setLogin = () => {
     if (isLogin === "로그인") {
-      setTimeout(() => setIsLogin("로그아웃"), 1000);
+      return setTimeout(() => setIsLogin("로그아웃"), 1000);
     } else {
-      setTimeout(() => setIsLogin("로그인"), 1000);
+      return setTimeout(() => setIsLogin("로그인"), 1000);
     }
   };
 

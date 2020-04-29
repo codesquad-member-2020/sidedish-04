@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import theme from "../conponents/theme";
+import theme from "../components/theme";
 import { LOGIN_URL } from "../constant/url";
 
 const LoginWrap = styled.div`
@@ -19,15 +19,21 @@ const LoginLink = styled.a`
   }
 `;
 function Login(props) {
-  const fetchLogin = () => {
-    props.setLogin();
+  const [isLogin, setIsLogin] = useState("로그인");
+
+  const setLogin = () => {
+    if (isLogin === "로그인") {
+      setTimeout(() => setIsLogin("로그아웃"), 1000);
+    } else {
+      setTimeout(() => setIsLogin("로그인"), 1000);
+    }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <LoginWrap>
-        <LoginLink href={LOGIN_URL} onClick={fetchLogin}>
-          <span>로그인</span>
+        <LoginLink href={LOGIN_URL} onClick={setLogin}>
+          <span>{isLogin}</span>
         </LoginLink>
       </LoginWrap>
       ;

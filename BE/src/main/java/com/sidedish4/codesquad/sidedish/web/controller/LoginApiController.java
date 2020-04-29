@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @Getter
 @RequiredArgsConstructor
@@ -25,7 +28,8 @@ public class LoginApiController {
     private final RestTemplate restTemplate;
 
     @GetMapping("/github/callback")
-    public RedirectView authorize(@RequestParam("code") String code) {
+    public ResponseEntity<Void> authorize(@RequestParam("code") String code,
+                                  HttpServletResponse response) {
         logger.info("code: {}", code);
         String url = "https://github.com/login/oauth/access_token";
         String client_id = "bc4a9e51a6494c1d0626";
@@ -36,11 +40,13 @@ public class LoginApiController {
         String mainUrl = "http://15.164.33.98/";
         String loginUrl = "http://15.164.33.98/login";
         try {
+            response.addHeader("login", "true");
             String accessToken = restTemplate.postForObject(url, accessTokenRequestDto, String.class);
             logger.info("accessToken : {}", accessToken);
-            return new RedirectView(mainUrl);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
-            return new RedirectView(loginUrl);
+            response.addHeader("login", "false");
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 }

@@ -8,7 +8,7 @@ import theme from "../theme";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Carousel({ sidedishes }) {
+function Carousel({ sidedishes, setDetailPageId, setDetailPageTitle }) {
   const ArrowLeft = styled.button`
     ::before {
       content: "◀";
@@ -42,10 +42,15 @@ function Carousel({ sidedishes }) {
     width: 960px;
     margin: 30px auto;
   `;
-  const Itme = styled.div`
+  const Item = styled.div`
     width: 215px;
     padding: 0px 15px 8px;
     min-height: 360px;
+  `;
+
+  const DetailPageButton = styled.button`
+    width: inherit;
+    min-height: inherit;
     text-align: center;
   `;
 
@@ -171,8 +176,8 @@ function Carousel({ sidedishes }) {
             <OriginPrice>{s_price}</OriginPrice>
           </Price>
           <EventBadgeBox>
-            {badges.map((badge) => (
-              <EventBadge>{badge}</EventBadge>
+            {badges.map((badge, index) => (
+              <EventBadge key={index}>{badge}</EventBadge>
             ))}
           </EventBadgeBox>
         </>
@@ -209,21 +214,29 @@ function Carousel({ sidedishes }) {
             } = sidedish;
 
             return (
-              <Itme key={detail_hash}>
-                <ImgArea>
-                  <Img src={image} alt={alt} />
-                  <ImgShadow>
-                    {delivery_type.map((deliveryType, index) => (
-                      <span key={index}>{deliveryType}</span>
-                    ))}
-                  </ImgShadow>
-                </ImgArea>
-                <ItemContent>
-                  <ItemTitle>{title}</ItemTitle>
-                  <ItemDesc>{description}</ItemDesc>
-                  {priceRender(n_price, s_price, badge)}
-                </ItemContent>
-              </Itme>
+              <Item key={detail_hash}>
+                <DetailPageButton
+                  onClick={() => {
+                    setDetailPageId(detail_hash);
+                    setDetailPageTitle(title);
+                    console.log(title, setDetailPageTitle);
+                  }}
+                >
+                  <ImgArea>
+                    <Img src={image} alt={alt} />
+                    <ImgShadow>
+                      {delivery_type.map((deliveryType, index) => (
+                        <span key={index}>{deliveryType}</span>
+                      ))}
+                    </ImgShadow>
+                  </ImgArea>
+                  <ItemContent>
+                    <ItemTitle>{title}</ItemTitle>
+                    <ItemDesc>{description}</ItemDesc>
+                    {priceRender(n_price, s_price, badge)}
+                  </ItemContent>
+                </DetailPageButton>
+              </Item>
             );
           })}
         </Slider>

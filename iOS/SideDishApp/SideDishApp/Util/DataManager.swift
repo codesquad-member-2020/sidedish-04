@@ -19,37 +19,42 @@ class DataManger {
         NotificationCenter.default.post(name: .changeDataSourceValue, object: nil, userInfo: ["reloadSection" : index])
     }
     
-    public func fetchImage(urlString: String, completion: @escaping (UIImage?, Error?) -> ()) {
-        let cacheDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let dataPath = cacheDirectory.appendingPathComponent("SideDishImage")
+    public func fetchImage(url: URL, completion: @escaping (UIImage?, Error?) -> ()) {
+        guard let saveDataDirectory = createDirectory() else { return }
         
-        // 디렉토리 경로 생성 -> 없으면
-        if !fileManager.fileExists(atPath: dataPath.path) {
-            do {
-                try fileManager.createDirectory(atPath: dataPath.path, withIntermediateDirectories: false, attributes: nil)
-            } catch let error {
-                completion(nil, error)
-            }
-        }
+        let saveDataPath = saveDataDirectory.appendingPathComponent(url.lastPathComponent)
         
-        guard let lastPathComponent = URL(string: urlString)?.lastPathComponent else { return }
-        let urlPath = dataPath.appendingPathComponent(lastPathComponent)
-        
-        if fileManager.fileExists(atPath: urlPath.path) {
-            do {
-                let data = try Data(contentsOf: urlPath)
-                let image = UIImage(data: data)
-                DispatchQueue.main.async {
-                    completion(image, nil)
-                }
-            } catch let error {
-                 completion(nil, error)
-            }
-        } else {
-            DataUseCase.loadImage(url: urlString, manager: NetworkManager()) { (image) in
-                self.fileManager.createFile(atPath: urlPath.path, contents: image?.jpegData(compressionQuality: 1) ?? image?.pngData(), attributes: nil)
+        if fileManager.fileExists(atPath: saveDataPath.path) {
+            let image = UIImage(contentsOfFile: saveDataPath.path)
+            DispatchQueue.main.async {
                 completion(image, nil)
             }
+        } else {
+            DataUseCase.loadImage(url: url, manager: NetworkManager()) { (local) in
+                guard let localURL = local else { return }
+                do {
+                    try self.fileManager.moveItem(atPath: localURL.path, toPath: saveDataPath.path)
+                    let image = UIImage(contentsOfFile: saveDataPath.path)
+                    DispatchQueue.main.async {
+                        completion(image, nil)
+                    }
+                } catch {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    private func createDirectory() -> URL? {
+        do {
+            let cacheDirectory = try fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let sideDishImageDataPath = cacheDirectory.appendingPathComponent("SideDishImage")
+            
+            try fileManager.createDirectory(at: sideDishImageDataPath, withIntermediateDirectories: true, attributes: nil)
+            return sideDishImageDataPath
+        } catch {
+            print(error.localizedDescription)
+            return nil
         }
     }
 }

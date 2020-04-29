@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./conponents/Header/Header";
-import Nav from "./conponents/Nav";
+import Nav from "./conponents/Nav/Nav";
 import Main from "./conponents/Main/Main";
 import { URL } from "../src/constant/url";
 import styled from "styled-components";

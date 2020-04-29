@@ -1,10 +1,9 @@
-import { navList } from "../constant/nav";
+import { navList } from "../../constant/nav";
 import styled from "styled-components";
-import { Layout } from "./Global";
+import { Layout } from "../Global";
 import React from "react";
 
 const NavWrap = styled.nav`
-  /* width: 100%; */
   height: 52px;
   background-color: #483f35;
 `;

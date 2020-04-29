@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Carousel from "./Carousel";
 import MoreButton from "./MoreButton";
+import DetailPage from "../DetailPage/Detailpage";
 import { title } from "../../constant/title";
 import { MAIN_URL, SIDE_URL, SOUP_URL } from "../../constant/url";
 
@@ -17,6 +18,8 @@ class Main extends Component {
     maindishes: [],
     sidedishes: [],
     moreSidedishes: [],
+    detailPageId: "",
+    detailPageTitle: "",
   };
 
   getMaindishes = () => {
@@ -49,25 +52,56 @@ class Main extends Component {
     this.getMoreSidedishes();
   }
 
-  // showMoreSidedishes() {
-  //   if (this.state.soup.length === 0) console.log(1);
-  // }
+  showDetailPage = () => {
+    const { detailPageId, detailPageTitle } = this.state;
+    if (detailPageId) {
+      return (
+        <DetailPage
+          removeDetailPage={this.removeDetailPage}
+          detailPageId={detailPageId}
+          detailPageTitle={detailPageTitle}
+        />
+      );
+    }
+  };
 
-  // showMore() {
-  //   console.log(2);
-  //   this.getSoup();
-  // }
+  setDetailPageId = (id) => {
+    this.setState({ detailPageId: id });
+  };
+
+  setDetailPageTitle = (title) => {
+    this.setState({ detailPageTitle: title });
+    console.log(this.state);
+  };
+
+  removeDetailPage = () => {
+    this.setState({ detailPageId: null });
+  };
 
   render() {
     const { maindishes, sidedishes, moreSidedishes } = this.state;
     const { main, side } = title;
+
     return (
       <MainWrap>
         <Title title={main.title} desc={main.desc} />
-        <Carousel sidedishes={maindishes} />
+        <Carousel
+          sidedishes={maindishes}
+          setDetailPageId={this.setDetailPageId}
+          setDetailPageTitle={this.setDetailPageTitle}
+        />
         <Title title={side.title} desc={side.desc} />
-        <Carousel sidedishes={sidedishes} />
-        <MoreButton moreSidedishes={moreSidedishes} />
+        <Carousel
+          sidedishes={sidedishes}
+          setDetailPageId={this.setDetailPageId}
+          setDetailPageTitle={this.setDetailPageTitle}
+        />
+        <MoreButton
+          moreSidedishes={moreSidedishes}
+          setDetailPageId={this.setDetailPageId}
+          setDetailPageTitle={this.setDetailPageTitle}
+        />
+        {this.showDetailPage()}
       </MainWrap>
     );
   }

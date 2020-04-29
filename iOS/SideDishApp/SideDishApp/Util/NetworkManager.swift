@@ -21,4 +21,15 @@ class NetworkManager {
             }
         }.resume()
     }
+    
+    public func requestImageData(url: URL, completion: @escaping (_ url: URL?, _ error: Error?) -> ()) {
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.downloadTask(with: request) { (url, res, error) in
+            if let error = error { print(error); completion(nil, error) }
+            
+            guard let localURL = url else { return }
+            completion(localURL, nil)
+        }.resume()
+    }
 }

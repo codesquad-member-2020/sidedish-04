@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Header from "./conponents/Header/Header";
-import Nav from "./conponents/Nav/Nav";
-import Login from "./conponents/Login";
-import Main from "./conponents/Main/Main";
+import Header from "./components/Header/Header";
+import Nav from "./components/Nav/Nav";
+import Login from "./components/Login";
+import Main from "./components/Main/Main";
 import styled from "styled-components";
 
 export const Wrap = styled.div`
@@ -11,19 +11,10 @@ export const Wrap = styled.div`
 
 class App extends Component {
   state = {
-    isLogin: true,
     sidedish: [],
   };
 
-  setLogin = () => {
-    this.setState({ isLogin: false });
-  };
-
   render() {
-    // const { isLogin } = this.state;
-    // if (isLogin) {
-    //   return <Login setLogin={this.setLogin} />;
-    // } else {
     return (
       <>
         <Wrap>
@@ -34,7 +25,6 @@ class App extends Component {
         </Wrap>
       </>
     );
-    // }
   }
 }
 

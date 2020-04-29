@@ -12,6 +12,7 @@ import WebKit
 class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
     var webView: WKWebView?
+    var indicator = UIActivityIndicatorView(style: .large)
     
     @IBAction func loginButton(_ sender: Any) {
         let webConfiguration = WKWebViewConfiguration()
@@ -25,10 +26,12 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         
         let myRequest = URLRequest(url: myURL!)
         webView?.load(myRequest)
+        webView?.addSubview(indicator)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setIndicator()
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -40,5 +43,22 @@ class LoginViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         decisionHandler(.allow)
     }
 
+    public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        indicator.isHidden = false
+        indicator.startAnimating()
+    }
+    
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        indicator.isHidden = true
+        indicator.stopAnimating()
+    }
+    
+    private func setIndicator() {
+        indicator.style = .medium
+        indicator.color = .gray
+        indicator.center = view.center
+        indicator.hidesWhenStopped = false
+    }
+    
 }
 

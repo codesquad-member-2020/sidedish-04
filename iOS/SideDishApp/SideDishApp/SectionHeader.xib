@@ -13,27 +13,38 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHA-Q5-edj" customClass="SectionHeaderCategory" customModule="SideDishApp" customModuleProvider="target">
-                    <rect key="frame" x="171" y="25.5" width="33" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김이 모락모락 국 찌개" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-3E-RyX">
-                    <rect key="frame" x="0.0" y="46.5" width="375" height="27.5"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQj-6L-cNg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김이 모락모락 국 찌개" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-3E-RyX">
+                            <rect key="frame" x="0.0" y="46" width="375" height="23"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHA-Q5-edj" customClass="SectionHeaderCategory" customModule="SideDishApp" customModuleProvider="target">
+                            <rect key="frame" x="171" y="25" width="33" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="eIh-3E-RyX" firstAttribute="top" secondItem="dHA-Q5-edj" secondAttribute="bottom" constant="5" id="EyG-YP-1i9"/>
+                        <constraint firstItem="eIh-3E-RyX" firstAttribute="centerX" secondItem="fQj-6L-cNg" secondAttribute="centerX" id="FUj-PA-D6Z"/>
+                        <constraint firstItem="eIh-3E-RyX" firstAttribute="top" secondItem="fQj-6L-cNg" secondAttribute="top" constant="46" id="H5T-YL-dtV"/>
+                        <constraint firstAttribute="bottom" secondItem="eIh-3E-RyX" secondAttribute="bottom" constant="5" id="MOz-5h-7VL"/>
+                        <constraint firstItem="eIh-3E-RyX" firstAttribute="width" secondItem="fQj-6L-cNg" secondAttribute="width" id="TiV-JU-A7A"/>
+                        <constraint firstItem="dHA-Q5-edj" firstAttribute="centerX" secondItem="eIh-3E-RyX" secondAttribute="centerX" id="jNK-Ti-Pgo"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
-                <constraint firstItem="eIh-3E-RyX" firstAttribute="leading" secondItem="AE7-r9-ugN" secondAttribute="leading" id="Je3-mz-dmI"/>
-                <constraint firstItem="AE7-r9-ugN" firstAttribute="trailing" secondItem="eIh-3E-RyX" secondAttribute="trailing" id="Jlv-Qu-Kd3"/>
-                <constraint firstItem="eIh-3E-RyX" firstAttribute="top" secondItem="dHA-Q5-edj" secondAttribute="bottom" constant="5" id="TRf-yP-Af0"/>
-                <constraint firstItem="eIh-3E-RyX" firstAttribute="centerX" secondItem="AE7-r9-ugN" secondAttribute="centerX" id="Vro-QN-dfG"/>
-                <constraint firstItem="eIh-3E-RyX" firstAttribute="bottom" secondItem="AE7-r9-ugN" secondAttribute="bottom" id="cTg-Qp-j0q"/>
-                <constraint firstItem="dHA-Q5-edj" firstAttribute="centerX" secondItem="eIh-3E-RyX" secondAttribute="centerX" id="fm7-Ye-AXe"/>
-                <constraint firstItem="eIh-3E-RyX" firstAttribute="width" secondItem="XoI-0p-1PC" secondAttribute="width" id="z9J-j8-sUA"/>
+                <constraint firstAttribute="bottom" secondItem="fQj-6L-cNg" secondAttribute="bottom" id="Dsc-rO-JIr"/>
+                <constraint firstItem="AE7-r9-ugN" firstAttribute="trailing" secondItem="fQj-6L-cNg" secondAttribute="trailing" id="JWg-yp-HIb"/>
+                <constraint firstItem="fQj-6L-cNg" firstAttribute="top" secondItem="XoI-0p-1PC" secondAttribute="top" id="ZoC-EX-YoI"/>
+                <constraint firstItem="fQj-6L-cNg" firstAttribute="leading" secondItem="XoI-0p-1PC" secondAttribute="leading" id="nJO-hP-a8a"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

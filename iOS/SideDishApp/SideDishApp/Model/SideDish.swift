@@ -9,6 +9,6 @@
 import Foundation
 
 struct SideDishResponse: Decodable {
-    let statusCode: Int
+    let statusCode: String
     let body: [DetailSideDishInfo]
 }

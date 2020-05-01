@@ -42,10 +42,12 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -66,7 +68,6 @@ class MainViewController: UIViewController {
         guard let sectionTitle = notification.userInfo?["sectionTitle"] as? String else { return }
         
         let productCount = dataManager.allDishes[sectionIndex]?.count
-        print("\(sectionTitle)상품은 \(productCount ?? 0)개가 있습니다.")
         Toast(text: "\(sectionTitle)상품은 \(productCount ?? 0)개가 있습니다.").show()
     }
 }

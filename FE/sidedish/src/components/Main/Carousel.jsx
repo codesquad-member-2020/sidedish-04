@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-// import Arrow from "./Arrow";
 import Slider from "react-slick";
 import { FlexCenter } from "../Global";
 import theme from "../theme";

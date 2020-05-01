@@ -31,6 +31,7 @@
 		ABEA7491245464620038C1AE /* DetailSideDishInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEA7490245464620038C1AE /* DetailSideDishInfo.swift */; };
 		ABEA7493245467E50038C1AE /* ExtensionNotificaitonName.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEA7492245467E50038C1AE /* ExtensionNotificaitonName.swift */; };
 		ABEA749524553C090038C1AE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEA749424553C090038C1AE /* DataManager.swift */; };
+		ABEA749B24595FBE0038C1AE /* BMDOHYEON_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABEA749A24595FBE0038C1AE /* BMDOHYEON_otf.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,8 @@
 		ABEA7490245464620038C1AE /* DetailSideDishInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSideDishInfo.swift; sourceTree = "<group>"; };
 		ABEA7492245467E50038C1AE /* ExtensionNotificaitonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNotificaitonName.swift; sourceTree = "<group>"; };
 		ABEA749424553C090038C1AE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		ABEA749A24595FBE0038C1AE /* BMDOHYEON_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMDOHYEON_otf.otf; path = ../../../../../Downloads/BMDOHYEON_otf.otf; sourceTree = "<group>"; };
+		ABEA749C245960220038C1AE /* BMDOHYEON_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMDOHYEON_otf.otf; sourceTree = "<group>"; };
 		B3FABDDD943524A0976D3DB8 /* Pods_SideDishApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -113,6 +116,7 @@
 				ABC9EF85244EB4740086DC5A /* AppDelegate.swift */,
 				ABC9EF87244EB4740086DC5A /* SceneDelegate.swift */,
 				ABC9EF8B244EB4740086DC5A /* Main.storyboard */,
+				ABEA749C245960220038C1AE /* BMDOHYEON_otf.otf */,
 				ABC9EF8E244EB4760086DC5A /* Assets.xcassets */,
 				ABC9EF90244EB4760086DC5A /* LaunchScreen.storyboard */,
 				ABC9EF93244EB4760086DC5A /* Info.plist */,
@@ -142,6 +146,7 @@
 				ABC9EFB7245063750086DC5A /* EventBadgeProtocol.swift */,
 				ABC9EF9E244EE4120086DC5A /* ExtensionString.swift */,
 				ABEA7492245467E50038C1AE /* ExtensionNotificaitonName.swift */,
+				ABEA749A24595FBE0038C1AE /* BMDOHYEON_otf.otf */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				ABC9EFB3244F66710086DC5A /* SectionHeader.xib in Resources */,
 				ABC9EF92244EB4760086DC5A /* LaunchScreen.storyboard in Resources */,
 				ABC9EF8F244EB4760086DC5A /* Assets.xcassets in Resources */,
+				ABEA749B24595FBE0038C1AE /* BMDOHYEON_otf.otf in Resources */,
 				ABC9EF8D244EB4740086DC5A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

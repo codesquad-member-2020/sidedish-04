@@ -21,18 +21,10 @@ const LoginLink = styled.a`
 function Login(props) {
   const [isLogin, setIsLogin] = useState("로그인");
 
-  const setLogin = () => {
-    if (isLogin === "로그인") {
-      return setTimeout(() => setIsLogin("로그아웃"), 1000);
-    } else {
-      return setTimeout(() => setIsLogin("로그인"), 1000);
-    }
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <LoginWrap>
-        <LoginLink href={LOGIN_URL} onClick={setLogin}>
+        <LoginLink href={LOGIN_URL}>
           <span>{isLogin}</span>
         </LoginLink>
       </LoginWrap>

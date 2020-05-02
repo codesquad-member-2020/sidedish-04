@@ -71,7 +71,6 @@ class Main extends Component {
 
   setDetailPageTitle = (title) => {
     this.setState({ detailPageTitle: title });
-    console.log(this.state);
   };
 
   removeDetailPage = () => {

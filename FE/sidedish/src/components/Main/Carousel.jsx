@@ -33,8 +33,6 @@ function Carousel({ sidedishes, setDetailPageId, setDetailPageTitle }) {
     arrows: true,
     prevArrow: <ArrowLeft />,
     nextArrow: <ArrowRight />,
-    // nextArrow: <Arrow type="next" />,
-    // prevArrow: <Arrow type="prev" />,
   };
 
   const SliderWrap = styled.div`

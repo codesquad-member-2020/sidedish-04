@@ -1,7 +1,0 @@
-#source 'https://github.com/CocoaPods/Specs.git'
-#platform :ios, '13.2'
-
-target 'SideDishApp' do
-  use_frameworks!
-  pod 'Toaster', :git => 'https://github.com/devxoul/Toaster.git', :branch => 'master'
-end

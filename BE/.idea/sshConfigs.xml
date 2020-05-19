@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="15.164.33.98" id="4af4df2d-aac2-440d-8029-2125872acc3a" keyPath="$USER_HOME$/다운로드/SidedishProject/sidedish-4.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
+    </configs>
+  </component>
+</project>
